@@ -151,10 +151,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/cookie-policy"
+                  to="/free-postal-entry"
                   className="text-muted-foreground hover:text-gold transition-colors"
                 >
-                  Cookie Policy
+                  Free Postal Entry
                 </Link>
               </li>
             </ul>
