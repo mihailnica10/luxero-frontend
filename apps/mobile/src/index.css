@@ -1,0 +1,18 @@
+/* Mobile-specific base styles */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Safe area handling for mobile */
+body {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Prevent overscroll bounce on iOS */
+#root {
+  overscroll-behavior: none;
+}

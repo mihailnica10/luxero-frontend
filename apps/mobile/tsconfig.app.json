@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@luxero/api-client": ["../../packages/shared/api-client/src"],
+      "@luxero/types": ["../../packages/shared/types/src"],
+      "@luxero/utils": ["../../packages/shared/utils/src"],
+      "@luxero/ui": ["../../packages/shared/ui/src"],
+      "@luxero/auth": ["../../packages/shared/auth/src"],
+      "@luxero/cart": ["../../packages/shared/cart/src"],
+      "@luxero/i18n": ["../../packages/shared/i18n/src"]
+    }
+  },
+  "include": ["src"]
+}

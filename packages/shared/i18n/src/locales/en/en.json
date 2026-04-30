@@ -1,0 +1,66 @@
+{
+  "faqs": [
+    {
+      "question": "How do competitions work?",
+      "answer": "Choose a competition, purchase tickets, and wait for the draw. Winners are selected randomly using verified algorithms."
+    },
+    {
+      "question": "How will I know if I win?",
+      "answer": "We'll contact you via email and display your name on our winners page. Make sure your profile contact details are up to date."
+    },
+    {
+      "question": "How are winners selected?",
+      "answer": "Winners are selected using independent random number generation to ensure complete fairness."
+    },
+    {
+      "question": "How long until I receive my prize?",
+      "answer": "Prizes are typically dispatched within 14 working days after the draw is verified."
+    },
+    {
+      "question": "Can I cancel my ticket purchase?",
+      "answer": "Unfortunately, once a purchase is made, it cannot be cancelled. Please review your order before completing payment."
+    }
+  ],
+  "howItWorks": [
+    {
+      "stepNumber": 1,
+      "title": "Browse Competitions",
+      "description": "Explore our wide range of luxury prize competitions. From watches to electronics, find something that excites you.",
+      "iconName": "Search"
+    },
+    {
+      "stepNumber": 2,
+      "title": "Purchase Tickets",
+      "description": "Select how many tickets you want to purchase. The more tickets you buy, the higher your chances of winning.",
+      "iconName": "Ticket"
+    },
+    {
+      "stepNumber": 3,
+      "title": "Win Big",
+      "description": "Wait for the draw date. If you're lucky, you'll be announced as a winner and receive your amazing prize!",
+      "iconName": "Trophy"
+    }
+  ],
+  "features": [
+    {
+      "title": "Fair & Transparent",
+      "description": "All draws are independently verified and completely random.",
+      "iconName": "Shield"
+    },
+    {
+      "title": "Premium Prizes",
+      "description": "We source only the finest luxury prizes from trusted brands.",
+      "iconName": "Trophy"
+    },
+    {
+      "title": "Community First",
+      "description": "Join thousands of members who trust us with their prize dreams.",
+      "iconName": "Users"
+    },
+    {
+      "title": "Instant Updates",
+      "description": "Real-time notifications when you win or competitions update.",
+      "iconName": "Zap"
+    }
+  ]
+}

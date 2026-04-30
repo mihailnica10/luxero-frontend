@@ -1,0 +1,19 @@
+{
+  "name": "@luxero/auth",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "@luxero/api-client": "workspace:*",
+    "@luxero/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "typescript": "^5.8.3"
+  }
+}

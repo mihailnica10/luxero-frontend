@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["vite/client"],
+    "paths": {
+      "@luxero/api-client": ["./packages/shared/api-client/src"],
+      "@luxero/types": ["./packages/shared/types/src"],
+      "@luxero/utils": ["./packages/shared/utils/src"],
+      "@luxero/ui": ["./packages/shared/ui/src"],
+      "@luxero/auth": ["./packages/shared/auth/src"],
+      "@luxero/cart": ["./packages/shared/cart/src"],
+      "@luxero/i18n": ["./packages/shared/i18n/src"]
+    }
+  },
+  "exclude": ["node_modules", "dist", ".turbo", "apps/*/dist", "apps/*/node_modules", "apps/*/.next"]
+}

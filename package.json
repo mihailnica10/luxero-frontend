@@ -1,0 +1,21 @@
+{
+  "name": "luxero-frontend",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/shared/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "clean": "turbo clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.3",
+    "@biomejs/biome": "^2.4.13",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "bun@1.43.0"
+}
