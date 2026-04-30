@@ -1,3 +1,6 @@
+# Turborepo build cache
+.turbo/
+
 # Logs
 logs
 *.log

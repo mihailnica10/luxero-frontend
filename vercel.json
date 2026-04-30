@@ -3,5 +3,8 @@
   "outputDirectory": "apps/web/dist",
   "installCommand": "bun install",
   "framework": "vite",
-  "regions": ["iad1"]
+  "regions": ["iad1"],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }

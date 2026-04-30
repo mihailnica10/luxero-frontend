@@ -118,18 +118,6 @@ export interface WinnerShowcase {
   winDate: string;
 }
 
-export interface WinnerShowcase {
-  id: string;
-  name: string;
-  initials?: string;
-  prize: string;
-  prizeValue: number;
-  imageUrl?: string;
-  testimonial?: string;
-  competitionTitle: string;
-  winDate: string;
-}
-
 export interface CartItem {
   competitionId: string;
   competitionTitle: string;

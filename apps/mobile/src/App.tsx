@@ -10,6 +10,9 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { LoginPage } from "./pages/LoginPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { CompetitionDetailPage } from "./pages/CompetitionDetailPage";
+import { HowItWorksPage } from "./pages/HowItWorksPage";
+import { WinnersPage } from "./pages/WinnersPage";
+import { FaqPage } from "./pages/FaqPage";
 
 export function App() {
   return (
@@ -19,6 +22,9 @@ export function App() {
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/sign-up" element={<SignUpPage />} />
         <Route path="/competitions/:slug" element={<CompetitionDetailPage />} />
+        <Route path="/how-it-works" element={<HowItWorksPage />} />
+        <Route path="/winners" element={<WinnersPage />} />
+        <Route path="/faq" element={<FaqPage />} />
 
         {/* Tab bar pages */}
         <Route element={<MobileLayout />}>

@@ -123,6 +123,37 @@ const sections = [
       </div>
     ),
   },
+  {
+    id: "data-protection",
+    title: "9. Data Protection",
+    content: (
+      <div className="space-y-3 text-muted-foreground">
+        <p>Personal data collected during competition entry is processed in accordance with our Privacy Policy and applicable UK data protection laws including the UK GDPR.</p>
+        <p>By entering our competitions, you consent to:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>The processing of your personal data for competition administration purposes</li>
+          <li>Your name and prize details being published if you win</li>
+          <li>Receiving winner notification via the email address provided</li>
+        </ul>
+        <p className="mt-3">For full details on how we handle your data, please see our <Link to="/privacy" className="text-gold hover:underline">Privacy Policy</Link>.</p>
+      </div>
+    ),
+  },
+  {
+    id: "responsible-gaming",
+    title: "10. Responsible Gaming",
+    content: (
+      <div className="space-y-3 text-muted-foreground">
+        <p>We are committed to promoting responsible gaming. Please note:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Only persons aged 18 or older may enter our competitions</li>
+          <li>Competition tickets should be viewed as a form of entertainment, not an investment</li>
+          <li>If you feel you may have a gambling problem, please seek help from <strong>GamCare</strong> at <a href="tel:08088020133" className="text-gold hover:underline">0808 8020 133</a></li>
+        </ul>
+        <p className="mt-3">We reserve the right to refuse or cancel entries where we have reasonable concerns about responsible gaming practices.</p>
+      </div>
+    ),
+  },
 ];
 
 export function TermsPage() {
