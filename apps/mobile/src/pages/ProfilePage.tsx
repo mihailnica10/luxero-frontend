@@ -127,6 +127,9 @@ export function ProfilePage() {
           <p className="text-xs text-muted-foreground">
             Luxero.win — Premium Prize Competitions
           </p>
+          <p className="text-xs text-muted-foreground mt-1">
+            App Version: {import.meta.env.VITE_APP_VERSION || "1.0.0"}
+          </p>
         </div>
       </div>
     </div>

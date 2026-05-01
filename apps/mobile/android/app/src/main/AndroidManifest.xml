@@ -46,6 +46,20 @@
                 <data android:scheme="https" android:host="*.luxero.win" />
             </intent-filter>
 
+            <!-- Custom URL scheme for when deep links fail -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="luxero" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="com.luxero.app" />
+            </intent-filter>
+
         </activity>
 
         <provider
