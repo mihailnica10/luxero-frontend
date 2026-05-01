@@ -9,7 +9,7 @@ const config: CapacitorConfig = {
     hostname: "luxero.win",
   },
   android: {
-    allowMixedContent: true,
+    allowMixedContent: false,
     backgroundColor: "#000000",
   },
   ios: {
