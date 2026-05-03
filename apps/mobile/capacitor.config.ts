@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: "Luxero",
   webDir: "dist",
   server: {
-    url: "https://luxero.win",
+    // url: "https://luxero.win", // disabled: serve bundled assets from APK
     hostname: "luxero.win",
   },
   android: {

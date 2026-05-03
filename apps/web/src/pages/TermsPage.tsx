@@ -1,8 +1,8 @@
-import { Footer } from "../components/layout/Footer";
-import { Header } from "../components/layout/Header";
+import { Button } from "@luxero/ui";
 import { Hash } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@luxero/ui";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
 
 const sections = [
   {
@@ -11,13 +11,15 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          The promoter of these competitions is <strong>Luxero</strong>, a company registered in England and Wales.
+          The promoter of these competitions is <strong>Luxero</strong>, a company registered in
+          England and Wales.
         </p>
+        <p>Registered address: Regus Quatro House, Frimley Road, Camberley, England, GU16 7ER</p>
         <p>
-          Registered address: Regus Quatro House, Frimley Road, Camberley, England, GU16 7ER
-        </p>
-        <p>
-          Email: <a href="mailto:support@luxero.win" className="text-gold hover:underline">support@luxero.win</a>
+          Email:{" "}
+          <a href="mailto:support@luxero.win" className="text-gold hover:underline">
+            support@luxero.win
+          </a>
         </p>
       </div>
     ),
@@ -34,7 +36,10 @@ const sections = [
           <li>Have a valid Luxero account</li>
           <li>Not be an employee of Luxero or their immediate family</li>
         </ul>
-        <p className="mt-3">Geographic restrictions may apply to certain prizes. All entries are subject to verification.</p>
+        <p className="mt-3">
+          Geographic restrictions may apply to certain prizes. All entries are subject to
+          verification.
+        </p>
       </div>
     ),
   },
@@ -45,10 +50,19 @@ const sections = [
       <div className="space-y-3 text-muted-foreground">
         <p>You can enter our competitions:</p>
         <ul className="list-disc list-inside space-y-2">
-          <li><strong>Online:</strong> Browse our competitions, select your tickets, complete the purchase</li>
-          <li><strong>By post:</strong> Send your details to our postal address — one entry per envelope</li>
+          <li>
+            <strong>Online:</strong> Browse our competitions, select your tickets, complete the
+            purchase
+          </li>
+          <li>
+            <strong>By post:</strong> Send your details to our postal address — one entry per
+            envelope
+          </li>
         </ul>
-        <p className="mt-3">Entries must be received before the published closing date. Incomplete entries will not be accepted.</p>
+        <p className="mt-3">
+          Entries must be received before the published closing date. Incomplete entries will not be
+          accepted.
+        </p>
       </div>
     ),
   },
@@ -58,11 +72,18 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <ul className="list-disc list-inside space-y-2">
-          <li><strong>Standard competitions:</strong> A winner is selected using a verified random number generator (RNG) after the closing date</li>
-          <li><strong>Instant win competitions:</strong> The winning ticket number is predetermined at the time of ticket purchase using a secret algorithm</li>
+          <li>
+            <strong>Standard competitions:</strong> A winner is selected using a verified random
+            number generator (RNG) after the closing date
+          </li>
+          <li>
+            <strong>Instant win competitions:</strong> The winning ticket number is predetermined at
+            the time of ticket purchase using a secret algorithm
+          </li>
         </ul>
         <p className="mt-3">
-          Winners are notified by email within 7 days of the draw. The winner&apos;s name and prize may be published on our website and social media channels.
+          Winners are notified by email within 7 days of the draw. The winner&apos;s name and prize
+          may be published on our website and social media channels.
         </p>
       </div>
     ),
@@ -76,7 +97,9 @@ const sections = [
           <li>Prizes are non-transferable and non-exchangeable</li>
           <li>Cash alternatives will not be offered unless explicitly stated</li>
           <li>Prize values are as advertised at the time of the competition launch</li>
-          <li>For cars, the winner is responsible for road tax, insurance, and registration costs</li>
+          <li>
+            For cars, the winner is responsible for road tax, insurance, and registration costs
+          </li>
         </ul>
       </div>
     ),
@@ -101,10 +124,12 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          Luxero shall not be liable for any indirect, incidental, or consequential damages arising from participation in competitions or receipt of any prize.
+          Luxero shall not be liable for any indirect, incidental, or consequential damages arising
+          from participation in competitions or receipt of any prize.
         </p>
         <p>
-          Our liability is limited to the maximum extent permitted by law. This does not affect your statutory rights as a consumer.
+          Our liability is limited to the maximum extent permitted by law. This does not affect your
+          statutory rights as a consumer.
         </p>
       </div>
     ),
@@ -118,7 +143,10 @@ const sections = [
           <li>Competitions may be withdrawn or amended at any time with notice</li>
           <li>The promoter&apos;s decision is final and no correspondence will be entered into</li>
           <li>These terms are governed by the laws of England and Wales</li>
-          <li>Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales</li>
+          <li>
+            Any disputes shall be subject to the exclusive jurisdiction of the courts of England and
+            Wales
+          </li>
         </ul>
       </div>
     ),
@@ -128,14 +156,23 @@ const sections = [
     title: "9. Data Protection",
     content: (
       <div className="space-y-3 text-muted-foreground">
-        <p>Personal data collected during competition entry is processed in accordance with our Privacy Policy and applicable UK data protection laws including the UK GDPR.</p>
+        <p>
+          Personal data collected during competition entry is processed in accordance with our
+          Privacy Policy and applicable UK data protection laws including the UK GDPR.
+        </p>
         <p>By entering our competitions, you consent to:</p>
         <ul className="list-disc list-inside space-y-2">
           <li>The processing of your personal data for competition administration purposes</li>
           <li>Your name and prize details being published if you win</li>
           <li>Receiving winner notification via the email address provided</li>
         </ul>
-        <p className="mt-3">For full details on how we handle your data, please see our <Link to="/privacy" className="text-gold hover:underline">Privacy Policy</Link>.</p>
+        <p className="mt-3">
+          For full details on how we handle your data, please see our{" "}
+          <Link to="/privacy" className="text-gold hover:underline">
+            Privacy Policy
+          </Link>
+          .
+        </p>
       </div>
     ),
   },
@@ -147,10 +184,21 @@ const sections = [
         <p>We are committed to promoting responsible gaming. Please note:</p>
         <ul className="list-disc list-inside space-y-2">
           <li>Only persons aged 18 or older may enter our competitions</li>
-          <li>Competition tickets should be viewed as a form of entertainment, not an investment</li>
-          <li>If you feel you may have a gambling problem, please seek help from <strong>GamCare</strong> at <a href="tel:08088020133" className="text-gold hover:underline">0808 8020 133</a></li>
+          <li>
+            Competition tickets should be viewed as a form of entertainment, not an investment
+          </li>
+          <li>
+            If you feel you may have a gambling problem, please seek help from{" "}
+            <strong>GamCare</strong> at{" "}
+            <a href="tel:08088020133" className="text-gold hover:underline">
+              0808 8020 133
+            </a>
+          </li>
         </ul>
-        <p className="mt-3">We reserve the right to refuse or cancel entries where we have reasonable concerns about responsible gaming practices.</p>
+        <p className="mt-3">
+          We reserve the right to refuse or cancel entries where we have reasonable concerns about
+          responsible gaming practices.
+        </p>
       </div>
     ),
   },
@@ -176,7 +224,9 @@ export function TermsPage() {
         <div className="relative overflow-hidden rounded-[1.5rem] mb-8">
           <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10">
             <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-6">
-              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">Contents</h2>
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
+                Contents
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {sections.map((section) => (
                   <a
@@ -196,7 +246,11 @@ export function TermsPage() {
         {/* Sections */}
         <div className="space-y-4">
           {sections.map((section) => (
-            <div key={section.id} id={section.id} className="relative overflow-hidden rounded-[1.5rem]">
+            <div
+              key={section.id}
+              id={section.id}
+              className="relative overflow-hidden rounded-[1.5rem]"
+            >
               <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10">
                 <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-6 sm:p-8">
                   <h2 className="text-lg font-semibold text-foreground mb-4">{section.title}</h2>
@@ -208,11 +262,12 @@ export function TermsPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground mb-4">
-            Questions about these terms?
-          </p>
+          <p className="text-sm text-muted-foreground mb-4">Questions about these terms?</p>
           <Link to="/contact">
-            <Button variant="outline" className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-6">
+            <Button
+              variant="outline"
+              className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-6"
+            >
               Contact Us
             </Button>
           </Link>

@@ -1,13 +1,12 @@
+import { api } from "@luxero/api-client";
+import { useAuth } from "@luxero/auth";
+import { useCart } from "@luxero/cart";
+import { Button, Input } from "@luxero/ui";
 import { Minus, Plus, Ticket, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { useAuth } from "@luxero/auth";
-import { api } from "@luxero/api-client";
-import { useCart } from "@luxero/cart";
 
 export function CartPage() {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
-import { Minus, Plus, Trash2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useCart } from "@luxero/cart";
 import { Button } from "@luxero/ui";
 import { cn } from "@luxero/utils";
+import { Minus, Plus, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function CartPage() {
   const navigate = useNavigate();

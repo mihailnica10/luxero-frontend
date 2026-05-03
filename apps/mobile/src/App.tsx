@@ -1,18 +1,17 @@
-import { Route, Routes } from "react-router-dom";
-import { AuthProvider } from "@luxero/auth";
+import { AuthProvider, useAuth } from "@luxero/auth";
 import { ProtectedRoute } from "@luxero/ui";
-import { useAuth } from "@luxero/auth";
+import { Route, Routes } from "react-router-dom";
 import { MobileLayout } from "./components/layout/MobileLayout";
-import { HomePage } from "./pages/HomePage";
-import { CompetitionsPage } from "./pages/CompetitionsPage";
 import { CartPage } from "./pages/CartPage";
-import { ProfilePage } from "./pages/ProfilePage";
-import { LoginPage } from "./pages/LoginPage";
-import { SignUpPage } from "./pages/SignUpPage";
 import { CompetitionDetailPage } from "./pages/CompetitionDetailPage";
-import { HowItWorksPage } from "./pages/HowItWorksPage";
-import { WinnersPage } from "./pages/WinnersPage";
+import { CompetitionsPage } from "./pages/CompetitionsPage";
 import { FaqPage } from "./pages/FaqPage";
+import { HomePage } from "./pages/HomePage";
+import { HowItWorksPage } from "./pages/HowItWorksPage";
+import { LoginPage } from "./pages/LoginPage";
+import { ProfilePage } from "./pages/ProfilePage";
+import { SignUpPage } from "./pages/SignUpPage";
+import { WinnersPage } from "./pages/WinnersPage";
 
 export function App() {
   return (

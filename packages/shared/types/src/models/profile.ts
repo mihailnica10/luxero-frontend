@@ -1,0 +1,37 @@
+export interface Profile {
+  email: string;
+  fullName?: string;
+  avatarUrl?: string;
+  phone?: string;
+  dateOfBirth?: Date;
+  addressLine1?: string;
+  addressLine2?: string;
+  city?: string;
+  postcode?: string;
+  country: string;
+  isAdmin: boolean;
+  isVerified: boolean;
+  marketingConsent: boolean;
+  instagram?: string;
+  facebook?: string;
+  twitter?: string;
+  tiktok?: string;
+  youtube?: string;
+  websiteUrl?: string;
+  showLastName: boolean;
+  showLocation: boolean;
+  showSocials: boolean;
+  totalEntries: number;
+  totalSpent: number;
+  winsCount: number;
+  referralCode?: string;
+  referredBy?: string;
+  referralCount: number;
+  referralBalance: number;
+  referralPayout: number;
+  referralTierPendingTickets: number;
+  referralTierAwardedTickets: number;
+  referralTierLastUpdated?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}

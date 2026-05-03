@@ -1,0 +1,40 @@
+export type CompetitionStatus = "draft" | "active" | "ended" | "drawn" | "cancelled";
+
+export interface Competition {
+  slug: string;
+  title: string;
+  shortDescription?: string;
+  description?: string;
+  category?: string;
+  status: CompetitionStatus;
+  prizeTitle?: string;
+  prizeValue: number;
+  prizeImageUrl?: string;
+  prizeImages?: string[];
+  prizeSpecifications?: Record<string, unknown>;
+  ticketPrice: number;
+  maxTickets: number;
+  ticketsSold: number;
+  maxTicketsPerUser: number;
+  question?: string;
+  questionOptions?: string[];
+  correctAnswer?: number;
+  startDate?: Date;
+  endDate?: Date;
+  drawDate?: Date;
+  isFeatured: boolean;
+  displayOrder: number;
+  isHeroFeatured: boolean;
+  heroDisplayOrder?: number;
+  heroImageUrl?: string;
+  originalPrice?: number;
+  imageUrl?: string;
+  currency: string;
+  winnerId?: string;
+  winnerTicketNumber?: number;
+  winnerAnnouncedAt?: Date;
+  isReferralReward: boolean;
+  createdBy?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}

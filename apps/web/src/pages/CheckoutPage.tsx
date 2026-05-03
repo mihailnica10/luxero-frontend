@@ -1,13 +1,12 @@
+import { api } from "@luxero/api-client";
+import { useAuth } from "@luxero/auth";
+import { useCart } from "@luxero/cart";
+import { Button, Card, CardContent } from "@luxero/ui";
 import { Lock, ShieldCheck, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Card, CardContent } from "@luxero/ui";
-import { useAuth } from "@luxero/auth";
-import { api } from "@luxero/api-client";
-import { useCart } from "@luxero/cart";
 
 export function CheckoutPage() {
   const navigate = useNavigate();

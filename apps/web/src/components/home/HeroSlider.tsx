@@ -1,12 +1,11 @@
 "use client";
 
+import { api } from "@luxero/api-client";
+import type { ApiResponse, Competition } from "@luxero/types";
+import { Badge, Button } from "@luxero/ui";
 import { ArrowLeft, ArrowRight, Clock, TrendingUp } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse, Competition } from "@luxero/types";
 
 interface HeroSlide extends Competition {
   originalPrice?: number;
@@ -149,13 +148,20 @@ export function HeroSlider() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/competitions">
-                  <Button size="lg" className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-primary-foreground font-semibold px-8 py-5 shadow-xl shadow-gold/30">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-primary-foreground font-semibold px-8 py-5 shadow-xl shadow-gold/30"
+                  >
                     Enter Now
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>
                 <Link to="/competitions">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-5">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full sm:w-auto border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-5"
+                  >
                     Browse All
                   </Button>
                 </Link>
@@ -250,7 +256,7 @@ export function HeroSlider() {
 
                     {/* Price Section */}
                     <div className="mb-6 sm:mb-8 select-none">
-                      {(s.originalPrice && s.ticketPrice && s.originalPrice > s.ticketPrice) ? (
+                      {s.originalPrice && s.ticketPrice && s.originalPrice > s.ticketPrice ? (
                         <div className="flex items-center flex-wrap gap-3 sm:gap-4">
                           <div className="flex items-center space-x-2 sm:space-x-3">
                             <span className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-400 line-through">
@@ -261,7 +267,11 @@ export function HeroSlider() {
                             </span>
                           </div>
                           <Badge className="bg-green-600/90 text-white border-0 px-2 sm:px-3 py-1 text-xs sm:text-sm font-semibold">
-                            SAVE {Math.round(((s.originalPrice - s.ticketPrice) / s.originalPrice) * 100)}%
+                            SAVE{" "}
+                            {Math.round(
+                              ((s.originalPrice - s.ticketPrice) / s.originalPrice) * 100
+                            )}
+                            %
                           </Badge>
                         </div>
                       ) : (
@@ -368,9 +378,7 @@ export function HeroSlider() {
               type="button"
               onClick={() => setCurrentSlide(index)}
               className={`h-1.5 rounded-full transition-all duration-300 touch-manipulation ${
-                index === currentSlide
-                  ? "w-8 sm:w-12 bg-gold"
-                  : "w-6 sm:w-8 bg-white/30"
+                index === currentSlide ? "w-8 sm:w-12 bg-gold" : "w-6 sm:w-8 bg-white/30"
               }`}
               aria-label={`Go to slide ${index + 1}`}
               aria-selected={index === currentSlide}

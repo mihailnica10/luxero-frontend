@@ -1,0 +1,10 @@
+# Capacitor/Android build output
+android/app/build/
+android/.gradle/
+android/build/
+
+# iOS build output
+ios/App/App/build/
+
+# Platform builds
+dist/

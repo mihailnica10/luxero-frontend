@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { ArrowLeft, CheckCircle, CreditCard, Search, Ticket, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -11,7 +11,8 @@ const steps = [
   {
     icon: Ticket,
     title: "Select Your Tickets",
-    description: "Choose how many tickets you'd like — more tickets increase your chances of winning.",
+    description:
+      "Choose how many tickets you'd like — more tickets increase your chances of winning.",
     number: 2,
   },
   {

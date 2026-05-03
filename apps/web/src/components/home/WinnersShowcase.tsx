@@ -1,20 +1,22 @@
 "use client";
 
-import { ArrowRight, Sparkles, Trophy } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Card, CardContent } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { useEffect, useState } from "react";
 import { api } from "@luxero/api-client";
 import type { ApiResponse, Winner } from "@luxero/types";
+import { Badge, Button, Card, CardContent, Skeleton } from "@luxero/ui";
+import { ArrowRight, Sparkles, Trophy } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function mapWinner(w: Winner) {
   return {
     id: w._id || w.id,
     name: w.displayName || "Anonymous Winner",
-    initials: (w.displayName || "AW").split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2),
+    initials: (w.displayName || "AW")
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2),
     prize: w.prizeTitle || "Luxury Prize",
     prizeValue: w.prizeValue || 0,
     imageUrl: w.winnerPhotoUrl,

@@ -1,14 +1,12 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse, Competition } from "@luxero/types";
+import { Button, Input, Skeleton } from "@luxero/ui";
+import { cn } from "@luxero/utils";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse, Competition } from "@luxero/types";
-import { cn } from "@luxero/utils";
 
 function mapCompetition(c: any): Competition {
   return {
@@ -115,10 +113,18 @@ export function CompetitionsPage() {
                 <Button variant="outline" size="sm" className="border-gold/20 hover:bg-gold/10">
                   All
                 </Button>
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-gold hover:bg-gold/10">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-gold hover:bg-gold/10"
+                >
                   Active
                 </Button>
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-gold hover:bg-gold/10">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-gold hover:bg-gold/10"
+                >
                   Ending Soon
                 </Button>
               </div>
@@ -149,7 +155,10 @@ export function CompetitionsPage() {
                   const left = getTicketsLeft(competition);
 
                   return (
-                    <Link key={competition.id || competition._id} to={`/competitions/${competition.slug || competition.id || competition._id}`}>
+                    <Link
+                      key={competition.id || competition._id}
+                      to={`/competitions/${competition.slug || competition.id || competition._id}`}
+                    >
                       <div className="bg-card rounded-xl border border-gold/10 p-6 hover:border-gold/30 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/10 h-full flex flex-col">
                         {imgUrl && (
                           <img
@@ -174,9 +183,7 @@ export function CompetitionsPage() {
                         <div className="space-y-3">
                           <div>
                             <div className="flex justify-between text-sm mb-1">
-                              <span className="text-muted-foreground">
-                                {progress}% Sold
-                              </span>
+                              <span className="text-muted-foreground">{progress}% Sold</span>
                               <span className="text-muted-foreground">
                                 {left.toLocaleString()} left
                               </span>
@@ -197,9 +204,13 @@ export function CompetitionsPage() {
                           </div>
                           <div className="flex justify-between items-center pt-2">
                             <span className="text-gold font-bold">
-                              £{(competition.ticketPrice ?? competition.price ?? 0).toFixed(2)} per ticket
+                              £{(competition.ticketPrice ?? competition.price ?? 0).toFixed(2)} per
+                              ticket
                             </span>
-                            <Button size="sm" className="bg-gold hover:bg-gold-dark text-primary-foreground font-semibold shadow-lg shadow-gold/20">
+                            <Button
+                              size="sm"
+                              className="bg-gold hover:bg-gold-dark text-primary-foreground font-semibold shadow-lg shadow-gold/20"
+                            >
                               Enter Now
                             </Button>
                           </div>

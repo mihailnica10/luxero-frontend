@@ -1,13 +1,10 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse, Competition } from "@luxero/types";
+import { Badge, Button, Input, Skeleton } from "@luxero/ui";
 import { Loader2, Search, Ticket, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse, Competition } from "@luxero/types";
 
 interface CompetitionEntry {
   id: string;
@@ -120,10 +117,9 @@ export function EntriesPage() {
     }
   }
 
-  const progressPercent =
-    selectedCompetition && selectedCompetition.totalTickets
-      ? Math.round((selectedCompetition.soldTickets / selectedCompetition.totalTickets) * 100)
-      : 0;
+  const progressPercent = selectedCompetition?.totalTickets
+    ? Math.round((selectedCompetition.soldTickets / selectedCompetition.totalTickets) * 100)
+    : 0;
 
   const formatDate = (dateStr: string) =>
     new Date(dateStr).toLocaleDateString("en-GB", {
@@ -141,7 +137,9 @@ export function EntriesPage() {
   };
 
   const activeCount = competitions.filter((c) => c.status === "active").length;
-  const drawnCount = competitions.filter((c) => c.status === "drawn" || c.status === "ended").length;
+  const drawnCount = competitions.filter(
+    (c) => c.status === "drawn" || c.status === "ended"
+  ).length;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -152,7 +150,10 @@ export function EntriesPage() {
         <section className="py-16 px-4 sm:px-6 lg:px-8 border-b border-border">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-10">
-              <Badge variant="outline" className="text-[10px] border-gold/30 text-gold bg-gold/10 mb-4">
+              <Badge
+                variant="outline"
+                className="text-[10px] border-gold/30 text-gold bg-gold/10 mb-4"
+              >
                 Full Transparency
               </Badge>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-3">
@@ -340,7 +341,9 @@ export function EntriesPage() {
                     {entries.length === 0 ? (
                       <div className="flex flex-col items-center justify-center py-20 text-center">
                         <Ticket className="w-12 h-12 text-muted-foreground/20 mb-4" />
-                        <p className="text-muted-foreground">No entries yet for this competition.</p>
+                        <p className="text-muted-foreground">
+                          No entries yet for this competition.
+                        </p>
                       </div>
                     ) : (
                       <div className="space-y-2">
@@ -413,7 +416,8 @@ export function EntriesPage() {
                         )}
 
                         <p className="text-center text-[10px] text-muted-foreground/60 pt-2">
-                          Showing {entries.length} of {entriesTotal.toLocaleString()} entries — first names only
+                          Showing {entries.length} of {entriesTotal.toLocaleString()} entries —
+                          first names only
                         </p>
                       </div>
                     )}

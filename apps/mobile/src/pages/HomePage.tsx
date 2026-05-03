@@ -1,8 +1,8 @@
 import { api } from "@luxero/api-client";
 import type { ApiResponse, Competition } from "@luxero/types";
+import { ArrowRight, CheckCircle, Search, Ticket } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Search, Ticket } from "lucide-react";
 
 const steps = [
   { icon: Search, title: "Browse", description: "Find exciting competitions" },
@@ -46,7 +46,10 @@ export function HomePage() {
             <span className="text-gold text-xs font-medium">Live Competitions</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground mb-2">
-            Win <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">Premium Prizes</span>
+            Win{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">
+              Premium Prizes
+            </span>
           </h1>
           <p className="text-muted-foreground text-sm mb-6 max-w-xs mx-auto">
             Enter competitions for luxury prizes at unbeatable prices

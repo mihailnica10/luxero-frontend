@@ -1,13 +1,5 @@
 import { useAuth } from "@luxero/auth";
-import {
-  ChevronRight,
-  HelpCircle,
-  LogOut,
-  Settings,
-  Ticket,
-  Trophy,
-  Users
-} from "lucide-react";
+import { ChevronRight, HelpCircle, LogOut, Settings, Ticket, Trophy, Users } from "lucide-react";
 
 interface MenuItem {
   icon: React.ComponentType<{ className?: string }>;
@@ -77,11 +69,7 @@ export function ProfilePage() {
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {user.isAdmin ? "Administrator" : "Member"}
                   </p>
-                  {user.fullName && (
-                    <p className="text-sm text-foreground mt-1">
-                      {user.fullName}
-                    </p>
-                  )}
+                  {user.fullName && <p className="text-sm text-foreground mt-1">{user.fullName}</p>}
                 </div>
               </div>
             </div>
@@ -124,9 +112,7 @@ export function ProfilePage() {
 
         {/* Footer branding */}
         <div className="mt-8 text-center">
-          <p className="text-xs text-muted-foreground">
-            Luxero.win — Premium Prize Competitions
-          </p>
+          <p className="text-xs text-muted-foreground">Luxero.win — Premium Prize Competitions</p>
           <p className="text-xs text-muted-foreground mt-1">
             App Version: {import.meta.env.VITE_APP_VERSION || "1.0.0"}
           </p>

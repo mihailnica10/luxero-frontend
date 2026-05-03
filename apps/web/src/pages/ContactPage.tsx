@@ -1,13 +1,10 @@
+import { api } from "@luxero/api-client";
+import { Button, Input, Label, Textarea } from "@luxero/ui";
 import { Clock, Mail } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { useState } from "react";
-import { Button } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Label } from "@luxero/ui";
-import { Textarea } from "@luxero/ui";
-import { api } from "@luxero/api-client";
 
 export function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
@@ -140,7 +137,9 @@ export function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">Name</Label>
+                    <Label htmlFor="name" className="text-sm font-medium text-muted-foreground">
+                      Name
+                    </Label>
                     <Input
                       id="name"
                       name="name"
@@ -151,7 +150,9 @@ export function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-medium text-muted-foreground">Email</Label>
+                    <Label htmlFor="email" className="text-sm font-medium text-muted-foreground">
+                      Email
+                    </Label>
                     <Input
                       id="email"
                       name="email"
@@ -164,7 +165,9 @@ export function ContactPage() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="subject" className="text-sm font-medium text-muted-foreground">Subject</Label>
+                  <Label htmlFor="subject" className="text-sm font-medium text-muted-foreground">
+                    Subject
+                  </Label>
                   <Input
                     id="subject"
                     name="subject"
@@ -175,7 +178,9 @@ export function ContactPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-medium text-muted-foreground">Message</Label>
+                  <Label htmlFor="message" className="text-sm font-medium text-muted-foreground">
+                    Message
+                  </Label>
                   <Textarea
                     id="message"
                     name="message"

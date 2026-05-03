@@ -1,11 +1,15 @@
+import { api } from "@luxero/api-client";
+import { useAuth } from "@luxero/auth";
+import type { ApiResponse } from "@luxero/types";
+import { Button, ProtectedRoute, Skeleton } from "@luxero/ui";
 import {
   ArrowRight,
   Gift,
   Package,
   Sparkles,
   Ticket,
-  Trophy,
   TrendingUp,
+  Trophy,
   User,
   Zap,
 } from "lucide-react";
@@ -13,12 +17,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { ProtectedRoute } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { useAuth } from "@luxero/auth";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface Stats {
   activeEntries: number;
@@ -133,9 +131,7 @@ function WinCelebration({ winsCount }: { winsCount: number }) {
               <p className="text-lg md:text-xl font-bold text-foreground">
                 You&apos;ve won {winsCount} prize{winsCount !== 1 ? "s" : ""}!
               </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                Check your wins page for details
-              </p>
+              <p className="text-sm text-muted-foreground mt-1">Check your wins page for details</p>
             </div>
             <Link to="/dashboard/wins" className="flex-shrink-0">
               <Button
@@ -311,7 +307,12 @@ function ReferralCard({ code }: { code: string | null }) {
 
 function DashboardContent() {
   const { user } = useAuth();
-  const [stats, setStats] = useState<Stats>({ activeEntries: 0, totalWins: 0, totalSpent: 0, totalEntries: 0 });
+  const [stats, setStats] = useState<Stats>({
+    activeEntries: 0,
+    totalWins: 0,
+    totalSpent: 0,
+    totalEntries: 0,
+  });
   const [entries, setEntries] = useState<Entry[]>([]);
   const [hotComps, setHotComps] = useState<Competition[]>([]);
   const [referralCode, setReferralCode] = useState<string | null>(null);
@@ -411,7 +412,6 @@ function DashboardContent() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8 md:space-y-10">
-
         {/* Hero Welcome Banner */}
         <div className="relative overflow-hidden rounded-[2rem]">
           <div className="p-1.5 rounded-[2rem] bg-gradient-to-br from-gold/10 via-card to-gold/5 ring-1 ring-gold/20">
@@ -450,7 +450,10 @@ function DashboardContent() {
                       </Button>
                     </Link>
                     <Link to="/dashboard/tickets">
-                      <Button variant="outline" className="border-gold/30 text-foreground hover:bg-gold/10 hover:border-gold/50 rounded-full px-6 py-2.5 transition-all">
+                      <Button
+                        variant="outline"
+                        className="border-gold/30 text-foreground hover:bg-gold/10 hover:border-gold/50 rounded-full px-6 py-2.5 transition-all"
+                      >
                         <Ticket className="w-4 h-4 mr-2" />
                         My Tickets
                       </Button>
@@ -468,10 +471,23 @@ function DashboardContent() {
         {/* Stats Bento Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           <div className="lg:col-span-2 grid grid-cols-2 gap-4 md:gap-6">
-            <StatCard value={stats.activeEntries} label="Active Entries" sublabel="competitions entered" />
-            <StatCard value={stats.totalWins} label="Total Wins" sublabel="prizes won" variant="gold" />
+            <StatCard
+              value={stats.activeEntries}
+              label="Active Entries"
+              sublabel="competitions entered"
+            />
+            <StatCard
+              value={stats.totalWins}
+              label="Total Wins"
+              sublabel="prizes won"
+              variant="gold"
+            />
             <div className="col-span-2">
-              <StatCard value={`£${(stats.totalSpent || 0).toFixed(0)}`} label="Total Spent" sublabel="on tickets" />
+              <StatCard
+                value={`£${(stats.totalSpent || 0).toFixed(0)}`}
+                label="Total Spent"
+                sublabel="on tickets"
+              />
             </div>
           </div>
 
@@ -492,7 +508,9 @@ function DashboardContent() {
                         <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-all">
                           <Icon className="w-5 h-5 text-gold" />
                         </div>
-                        <span className="text-sm font-medium text-foreground group-hover:text-gold transition-colors">{item.label}</span>
+                        <span className="text-sm font-medium text-foreground group-hover:text-gold transition-colors">
+                          {item.label}
+                        </span>
                         <ArrowRight className="w-4 h-4 ml-auto text-muted-foreground group-hover:text-gold group-hover:translate-x-1 transition-all" />
                       </div>
                     </Link>
@@ -510,17 +528,24 @@ function DashboardContent() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <Ticket className="w-5 h-5 text-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-gold/80 font-semibold">Your Entries</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-gold/80 font-semibold">
+                    Your Entries
+                  </span>
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">
                   Active Entries
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {activeEntries.length} competition{activeEntries.length !== 1 ? "s" : ""} you&apos;re in
+                  {activeEntries.length} competition{activeEntries.length !== 1 ? "s" : ""}{" "}
+                  you&apos;re in
                 </p>
               </div>
               <Link to="/dashboard/tickets" className="hidden sm:block">
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2 group">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-foreground gap-2 group"
+                >
                   View All
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -541,13 +566,23 @@ function DashboardContent() {
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="w-5 h-5 text-gold" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-gold/80 font-semibold">Trending</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-gold/80 font-semibold">
+                    Trending
+                  </span>
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">Hot Right Now</h2>
-                <p className="text-sm text-muted-foreground mt-1">You haven&apos;t entered these yet</p>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground tracking-tight">
+                  Hot Right Now
+                </h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  You haven&apos;t entered these yet
+                </p>
               </div>
               <Link to="/competitions" className="hidden sm:block">
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2 group">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-foreground gap-2 group"
+                >
                   View All
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -571,7 +606,8 @@ function DashboardContent() {
             </div>
             <h3 className="text-xl font-semibold text-foreground mb-2">Ready to Play?</h3>
             <p className="text-sm text-muted-foreground max-w-sm mb-6">
-              Browse our active competitions and get your tickets for a chance to win incredible prizes
+              Browse our active competitions and get your tickets for a chance to win incredible
+              prizes
             </p>
             <Link to="/competitions">
               <Button className="bg-gold hover:bg-gold-dark text-primary-foreground font-semibold rounded-full px-8 py-3 shadow-lg shadow-gold/20 hover:shadow-xl hover:shadow-gold/30 transition-all group">
@@ -584,7 +620,6 @@ function DashboardContent() {
 
         {/* Referral Card */}
         <ReferralCard code={referralCode} />
-
       </main>
       <Footer />
     </div>

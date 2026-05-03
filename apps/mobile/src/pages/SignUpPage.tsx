@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "@luxero/auth";
 import { Button, Input, Label } from "@luxero/ui";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function SignUpPage() {
   const navigate = useNavigate();

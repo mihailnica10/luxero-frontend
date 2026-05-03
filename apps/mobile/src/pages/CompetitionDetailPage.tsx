@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
 import { api } from "@luxero/api-client";
-import type { ApiResponse, CompetitionDetail } from "@luxero/types";
 import { useCart } from "@luxero/cart";
+import type { ApiResponse, CompetitionDetail } from "@luxero/types";
 import { Button } from "@luxero/ui";
 import { ArrowLeft, Check, Minus, Plus, Ticket } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 export function CompetitionDetailPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -42,7 +42,11 @@ export function CompetitionDetailPage() {
     if (soldRatio >= 1) {
       return { label: "SOLD OUT", className: "bg-muted text-muted-foreground" };
     }
-    if (competition.status === "ended" || competition.status === "drawn" || competition.status === "cancelled") {
+    if (
+      competition.status === "ended" ||
+      competition.status === "drawn" ||
+      competition.status === "cancelled"
+    ) {
       return { label: "ENDED", className: "bg-muted text-muted-foreground" };
     }
     if (competition.status === "active") {
@@ -112,7 +116,9 @@ export function CompetitionDetailPage() {
           <div className="text-center">
             <h1 className="text-xl font-bold">{competition.prizeTitle || competition.title}</h1>
             {competition.prizeValue > 0 && (
-              <p className="text-gold text-lg font-semibold mt-1">Prize Value: £{competition.prizeValue}</p>
+              <p className="text-gold text-lg font-semibold mt-1">
+                Prize Value: £{competition.prizeValue}
+              </p>
             )}
           </div>
 
@@ -135,12 +141,16 @@ export function CompetitionDetailPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <p className="text-xs text-muted-foreground">Price per ticket</p>
-                    <p className="text-2xl font-bold text-gold">£{competition.price ?? competition.ticketPrice}</p>
+                    <p className="text-2xl font-bold text-gold">
+                      £{competition.price ?? competition.ticketPrice}
+                    </p>
                   </div>
                   <div className="text-right">
                     <p className="text-xs text-muted-foreground">Draw date</p>
                     <p className="font-medium text-sm">
-                      {competition.drawDate ? new Date(competition.drawDate).toLocaleDateString() : "TBA"}
+                      {competition.drawDate
+                        ? new Date(competition.drawDate).toLocaleDateString()
+                        : "TBA"}
                     </p>
                   </div>
                 </div>
@@ -148,7 +158,9 @@ export function CompetitionDetailPage() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Tickets sold</span>
-                    <span className="font-medium">{competition.soldTickets}/{competition.totalTickets}</span>
+                    <span className="font-medium">
+                      {competition.soldTickets}/{competition.totalTickets}
+                    </span>
                   </div>
                   <div className="h-3 bg-secondary rounded-full overflow-hidden">
                     <div
@@ -192,7 +204,9 @@ export function CompetitionDetailPage() {
                   </div>
                   <div className="mt-3 pt-3 border-t border-border/20 flex justify-between text-sm">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span className="font-semibold text-gold">£{((competition.price ?? competition.ticketPrice) * quantity).toFixed(2)}</span>
+                    <span className="font-semibold text-gold">
+                      £{((competition.price ?? competition.ticketPrice) * quantity).toFixed(2)}
+                    </span>
                   </div>
                 </div>
               </div>

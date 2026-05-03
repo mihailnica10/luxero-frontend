@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { api } from "@luxero/api-client";
 import type { ApiResponse } from "@luxero/types";
 import { ArrowLeft, Trophy } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface Winner {
   id: string;
@@ -50,9 +50,7 @@ export function WinnersPage() {
           <h1 className="text-2xl font-bold mb-1">
             Our <span className="text-gold">Winners</span>
           </h1>
-          <p className="text-muted-foreground text-sm">
-            Congratulations to all our lucky winners!
-          </p>
+          <p className="text-muted-foreground text-sm">Congratulations to all our lucky winners!</p>
         </div>
 
         {loading ? (
@@ -68,10 +66,7 @@ export function WinnersPage() {
         ) : (
           <div className="space-y-3">
             {winners.map((winner, idx) => (
-              <div
-                key={winner.id}
-                className="relative overflow-hidden rounded-[1.5rem]"
-              >
+              <div key={winner.id} className="relative overflow-hidden rounded-[1.5rem]">
                 <div className="p-1.5 rounded-[1.5rem] bg-black/5 ring-1 ring-black/5">
                   <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-4">
                     <div className="flex items-center gap-3">

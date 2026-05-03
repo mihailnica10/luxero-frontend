@@ -1,11 +1,26 @@
-import { ArrowRight, BarChart3, Bell, CreditCard, Gem, Headphones, HelpCircle, Lock, Search, Shield, Ticket, Clock, Trophy, Users } from "lucide-react";
+import { api } from "@luxero/api-client";
+import type { ApiResponse } from "@luxero/types";
+import { Button } from "@luxero/ui";
+import {
+  ArrowRight,
+  BarChart3,
+  Bell,
+  Clock,
+  CreditCard,
+  Gem,
+  Headphones,
+  HelpCircle,
+  Lock,
+  Search,
+  Shield,
+  Ticket,
+  Trophy,
+  Users,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { useEffect, useState } from "react";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface Step {
   stepNumber: number;
@@ -55,23 +70,81 @@ export function HowItWorksPage() {
     fetchContent();
   }, []);
 
-  const staticSteps: Step[] = steps.length ? steps : [
-    { stepNumber: 1, title: "Browse Competitions", description: "Explore our luxury competitions and find a prize that excites you.", icon: "Search" },
-    { stepNumber: 2, title: "Select Your Tickets", description: "Choose how many tickets you'd like — more tickets increase your chances.", icon: "Ticket" },
-    { stepNumber: 3, title: "Complete Purchase", description: "Quick and secure checkout with card, Apple Pay or Google Pay.", icon: "CreditCard" },
-    { stepNumber: 4, title: "Await the Draw", description: "Sit back and watch the countdown. Winners are selected at random.", icon: "Clock" },
-    { stepNumber: 5, title: "Win & Celebrate", description: "Winners are notified by email and prizes dispatched within 14 days.", icon: "Trophy" },
-    { stepNumber: 6, title: "Refer Friends", description: "Share your win and earn free tickets for every friend who enters.", icon: "Users" },
-  ];
+  const staticSteps: Step[] = steps.length
+    ? steps
+    : [
+        {
+          stepNumber: 1,
+          title: "Browse Competitions",
+          description: "Explore our luxury competitions and find a prize that excites you.",
+          icon: "Search",
+        },
+        {
+          stepNumber: 2,
+          title: "Select Your Tickets",
+          description: "Choose how many tickets you'd like — more tickets increase your chances.",
+          icon: "Ticket",
+        },
+        {
+          stepNumber: 3,
+          title: "Complete Purchase",
+          description: "Quick and secure checkout with card, Apple Pay or Google Pay.",
+          icon: "CreditCard",
+        },
+        {
+          stepNumber: 4,
+          title: "Await the Draw",
+          description: "Sit back and watch the countdown. Winners are selected at random.",
+          icon: "Clock",
+        },
+        {
+          stepNumber: 5,
+          title: "Win & Celebrate",
+          description: "Winners are notified by email and prizes dispatched within 14 days.",
+          icon: "Trophy",
+        },
+        {
+          stepNumber: 6,
+          title: "Refer Friends",
+          description: "Share your win and earn free tickets for every friend who enters.",
+          icon: "Users",
+        },
+      ];
 
-  const staticFeatures: Feature[] = features.length ? features : [
-    { title: "Verified Random Draws", description: "Every winner is selected using certified random number generation.", icon: "Shield" },
-    { title: "Real Luxury Prizes", description: "Only authentic, high-value prizes from trusted brands and retailers.", icon: "Gem" },
-    { title: "Instant Notifications", description: "Know immediately when you've won via email and your dashboard.", icon: "Bell" },
-    { title: "Track Your Entries", description: "See all your tickets, draws, and wins in your personal dashboard.", icon: "BarChart3" },
-    { title: "Secure Payments", description: "Stripe-powered checkout with full fraud protection and encryption.", icon: "Lock" },
-    { title: "Dedicated Support", description: "Our team is here to help every day during business hours.", icon: "Headphones" },
-  ];
+  const staticFeatures: Feature[] = features.length
+    ? features
+    : [
+        {
+          title: "Verified Random Draws",
+          description: "Every winner is selected using certified random number generation.",
+          icon: "Shield",
+        },
+        {
+          title: "Real Luxury Prizes",
+          description: "Only authentic, high-value prizes from trusted brands and retailers.",
+          icon: "Gem",
+        },
+        {
+          title: "Instant Notifications",
+          description: "Know immediately when you've won via email and your dashboard.",
+          icon: "Bell",
+        },
+        {
+          title: "Track Your Entries",
+          description: "See all your tickets, draws, and wins in your personal dashboard.",
+          icon: "BarChart3",
+        },
+        {
+          title: "Secure Payments",
+          description: "Stripe-powered checkout with full fraud protection and encryption.",
+          icon: "Lock",
+        },
+        {
+          title: "Dedicated Support",
+          description: "Our team is here to help every day during business hours.",
+          icon: "Headphones",
+        },
+      ];
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -83,7 +156,10 @@ export function HowItWorksPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                How It <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">Works</span>
+                How It{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">
+                  Works
+                </span>
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Getting started is easy. Follow these steps to enter our luxury prize competitions.
@@ -96,7 +172,10 @@ export function HowItWorksPage() {
                 return (
                   <div key={step.stepNumber} className="relative">
                     {idx < staticSteps.length - 1 && (
-                      <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-gold/30 to-transparent -translate-x-4 z-10" style={{ maxWidth: "2rem" }} />
+                      <div
+                        className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-gold/30 to-transparent -translate-x-4 z-10"
+                        style={{ maxWidth: "2rem" }}
+                      />
                     )}
                     <div className="relative overflow-hidden rounded-[1.5rem]">
                       <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10 hover:ring-gold/30 transition-all duration-500">
@@ -107,7 +186,9 @@ export function HowItWorksPage() {
                           <span className="inline-block text-xs font-bold text-gold mb-3 px-3 py-1 rounded-full bg-gold/10 border border-gold/20">
                             Step {step.stepNumber}
                           </span>
-                          <h3 className="font-semibold text-lg text-foreground mb-2">{step.title}</h3>
+                          <h3 className="font-semibold text-lg text-foreground mb-2">
+                            {step.title}
+                          </h3>
                           <p className="text-sm text-muted-foreground">{step.description}</p>
                         </div>
                       </div>
@@ -124,7 +205,10 @@ export function HowItWorksPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">Luxero</span>
+                Why Choose{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">
+                  Luxero
+                </span>
               </h2>
             </div>
 
@@ -158,7 +242,8 @@ export function HowItWorksPage() {
                     <div className="text-center sm:text-left flex-1">
                       <h3 className="text-2xl font-bold text-foreground mb-2">Have Questions?</h3>
                       <p className="text-muted-foreground mb-4">
-                        Check our frequently asked questions for more details about how competitions work.
+                        Check our frequently asked questions for more details about how competitions
+                        work.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-3 justify-center sm:justify-start">
                         <Link to="/faq">
@@ -167,7 +252,10 @@ export function HowItWorksPage() {
                           </Button>
                         </Link>
                         <Link to="/contact">
-                          <Button variant="outline" className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-6">
+                          <Button
+                            variant="outline"
+                            className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-6"
+                          >
                             Contact Us
                           </Button>
                         </Link>
@@ -197,7 +285,10 @@ export function HowItWorksPage() {
                 </Button>
               </Link>
               <Link to="/auth/sign-up">
-                <Button variant="outline" className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-8 py-3 text-base">
+                <Button
+                  variant="outline"
+                  className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-8 py-3 text-base"
+                >
                   Create Account
                 </Button>
               </Link>

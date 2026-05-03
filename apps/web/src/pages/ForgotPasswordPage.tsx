@@ -1,14 +1,11 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { Footer } from "../components/layout/Footer";
-import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Label } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
 import { api } from "@luxero/api-client";
 import type { ApiResponse } from "@luxero/types";
+import { Button, Input, Label, Skeleton } from "@luxero/ui";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
 
 export function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -37,15 +34,26 @@ export function ForgotPasswordPage() {
             <div className="bg-card rounded-xl border border-gold/10 p-8">
               <div className="text-center mb-8">
                 <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-8 h-8 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
                 <h1 className="text-2xl font-bold tracking-tight">
                   <span className="text-gold-gradient">Check Your Email</span>
                 </h1>
                 <p className="text-muted-foreground text-sm mt-2">
-                  If an account exists for <strong>{successEmail}</strong>, we&apos;ve sent password reset instructions.
+                  If an account exists for <strong>{successEmail}</strong>, we&apos;ve sent password
+                  reset instructions.
                 </p>
               </div>
               <p className="text-xs text-muted-foreground text-center mb-4">
@@ -53,7 +61,10 @@ export function ForgotPasswordPage() {
                 <button
                   type="button"
                   className="text-gold hover:text-gold-light"
-                  onClick={() => { mutation.reset(); setSuccessEmail(""); }}
+                  onClick={() => {
+                    mutation.reset();
+                    setSuccessEmail("");
+                  }}
                 >
                   try again
                 </button>
@@ -107,7 +118,9 @@ export function ForgotPasswordPage() {
 
                 {mutation.error && (
                   <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-                    {mutation.error instanceof Error ? mutation.error.message : "Something went wrong."}
+                    {mutation.error instanceof Error
+                      ? mutation.error.message
+                      : "Something went wrong."}
                   </div>
                 )}
 

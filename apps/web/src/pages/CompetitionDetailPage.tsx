@@ -1,14 +1,23 @@
-import { Check, ChevronLeft, ChevronRight, Clock, HelpCircle, Shield, ShoppingCart, Ticket, Trophy, Users } from "lucide-react";
+import { api } from "@luxero/api-client";
+import { useCart } from "@luxero/cart";
+import type { ApiResponse, Competition } from "@luxero/types";
+import { Badge, Button, Skeleton } from "@luxero/ui";
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  HelpCircle,
+  Shield,
+  ShoppingCart,
+  Ticket,
+  Trophy,
+  Users,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import { useCart } from "@luxero/cart";
-import type { ApiResponse, Competition } from "@luxero/types";
 
 interface CompetitionRelated {
   _id: string;
@@ -51,7 +60,7 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
         { value: timeLeft.hours, label: "Hours" },
         { value: timeLeft.minutes, label: "Minutes" },
         { value: timeLeft.seconds, label: "Seconds" },
-      ].map(item => (
+      ].map((item) => (
         <div key={item.label} className="bg-card border border-gold/20 rounded-lg p-3">
           <div className="text-2xl font-bold text-gold">
             {item.value.toString().padStart(2, "0")}
@@ -158,23 +167,45 @@ export function CompetitionDetailPage() {
   const ticketsRemaining = maxTickets - ticketsSold;
   const totalPrice = quantity * (competition?.ticketPrice ?? competition?.price ?? 0);
 
-  const existingCartItem = items.find(item => item.competitionId === competition?.id);
+  const existingCartItem = items.find((item) => item.competitionId === competition?.id);
   const currentInCart = existingCartItem?.quantity ?? 0;
 
   const statusConfig: Record<string, { label: string; className: string }> = {
-    active: { label: "Live Now", className: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
+    active: {
+      label: "Live Now",
+      className: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+    },
     ended: { label: "Ended", className: "bg-muted/20 text-muted-foreground border-border" },
     coming: { label: "Coming Soon", className: "bg-gold/20 text-gold border-gold/30" },
   };
 
   const faqs = [
-    { question: "How do I enter this competition?", answer: "Select the number of tickets you wish to purchase, answer the qualifying question, then click 'Add to Cart' to proceed to checkout." },
-    { question: "How is the winner selected?", answer: "When all tickets are sold or the countdown ends, a winner is selected using a verified random number generator (RNG)." },
-    { question: "When will the draw take place?", answer: competition?.drawDate
-      ? `The draw is scheduled for ${new Date(competition.drawDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.`
-      : "The draw date will be announced once all tickets are sold." },
-    { question: "How will I know if I've won?", answer: "The winner will be notified by email at the address used during purchase. Winner's names are also published on our Winners page." },
-    { question: "How long does prize delivery take?", answer: "Once the winner has been verified, prizes are typically dispatched within 14 working days." },
+    {
+      question: "How do I enter this competition?",
+      answer:
+        "Select the number of tickets you wish to purchase, answer the qualifying question, then click 'Add to Cart' to proceed to checkout.",
+    },
+    {
+      question: "How is the winner selected?",
+      answer:
+        "When all tickets are sold or the countdown ends, a winner is selected using a verified random number generator (RNG).",
+    },
+    {
+      question: "When will the draw take place?",
+      answer: competition?.drawDate
+        ? `The draw is scheduled for ${new Date(competition.drawDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.`
+        : "The draw date will be announced once all tickets are sold.",
+    },
+    {
+      question: "How will I know if I've won?",
+      answer:
+        "The winner will be notified by email at the address used during purchase. Winner's names are also published on our Winners page.",
+    },
+    {
+      question: "How long does prize delivery take?",
+      answer:
+        "Once the winner has been verified, prizes are typically dispatched within 14 working days.",
+    },
   ];
 
   if (isLoading) {
@@ -185,10 +216,16 @@ export function CompetitionDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <Skeleton className="aspect-square rounded-[2rem]" shimmer />
             <div className="space-y-6">
-              <div><Skeleton className="h-6 w-40 mb-3" shimmer /><Skeleton className="h-10 w-full mb-2" shimmer /><Skeleton className="h-5 w-3/4" shimmer /></div>
+              <div>
+                <Skeleton className="h-6 w-40 mb-3" shimmer />
+                <Skeleton className="h-10 w-full mb-2" shimmer />
+                <Skeleton className="h-5 w-3/4" shimmer />
+              </div>
               <Skeleton className="h-24 w-full rounded-xl" shimmer />
               <Skeleton className="h-40 w-full rounded-xl" shimmer />
-              <Skeleton className="h-4 w-full" shimmer /><Skeleton className="h-4 w-3/4" shimmer /><Skeleton className="h-4 w-1/2" shimmer />
+              <Skeleton className="h-4 w-full" shimmer />
+              <Skeleton className="h-4 w-3/4" shimmer />
+              <Skeleton className="h-4 w-1/2" shimmer />
             </div>
           </div>
         </main>
@@ -204,8 +241,13 @@ export function CompetitionDetailPage() {
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
             <h2 className="text-2xl font-bold mb-2">Competition Not Found</h2>
-            <p className="text-muted-foreground mb-4">{error || "This competition doesn't exist."}</p>
-            <Button onClick={() => navigate("/competitions")} className="bg-gold hover:bg-gold-dark text-primary-foreground">
+            <p className="text-muted-foreground mb-4">
+              {error || "This competition doesn't exist."}
+            </p>
+            <Button
+              onClick={() => navigate("/competitions")}
+              className="bg-gold hover:bg-gold-dark text-primary-foreground"
+            >
               Browse Competitions
             </Button>
           </div>
@@ -231,9 +273,13 @@ export function CompetitionDetailPage() {
         {/* Breadcrumb */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+            <Link to="/" className="hover:text-foreground transition-colors">
+              Home
+            </Link>
             <span>/</span>
-            <Link to="/competitions" className="hover:text-foreground transition-colors">Competitions</Link>
+            <Link to="/competitions" className="hover:text-foreground transition-colors">
+              Competitions
+            </Link>
             <span>/</span>
             <span className="text-foreground truncate">{competition.title}</span>
           </nav>
@@ -264,7 +310,9 @@ export function CompetitionDetailPage() {
                       variant="ghost"
                       size="icon"
                       className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background"
-                      onClick={() => setCurrentImageIndex(prev => prev === 0 ? images.length - 1 : prev - 1)}
+                      onClick={() =>
+                        setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+                      }
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </Button>
@@ -272,7 +320,9 @@ export function CompetitionDetailPage() {
                       variant="ghost"
                       size="icon"
                       className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background"
-                      onClick={() => setCurrentImageIndex(prev => prev === images.length - 1 ? 0 : prev + 1)}
+                      onClick={() =>
+                        setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+                      }
                     >
                       <ChevronRight className="w-5 h-5" />
                     </Button>
@@ -280,7 +330,9 @@ export function CompetitionDetailPage() {
                 )}
 
                 {/* Status badge */}
-                <Badge className={`absolute top-4 left-4 ${statusConfig[competition.status]?.className ?? statusConfig.active.className}`}>
+                <Badge
+                  className={`absolute top-4 left-4 ${statusConfig[competition.status]?.className ?? statusConfig.active.className}`}
+                >
                   {statusConfig[competition.status]?.label ?? "Active"}
                 </Badge>
               </div>
@@ -308,8 +360,12 @@ export function CompetitionDetailPage() {
                 <div className="relative overflow-hidden rounded-[1.5rem]">
                   <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10">
                     <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-6">
-                      <h3 className="font-semibold text-foreground mb-3 text-gold">About This Prize</h3>
-                      <p className="text-muted-foreground leading-relaxed">{competition.description}</p>
+                      <h3 className="font-semibold text-foreground mb-3 text-gold">
+                        About This Prize
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {competition.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -324,7 +380,9 @@ export function CompetitionDetailPage() {
                   {competition.title}
                 </h1>
                 {competition.shortDescription && (
-                  <p className="text-lg text-muted-foreground mb-4">{competition.shortDescription}</p>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    {competition.shortDescription}
+                  </p>
                 )}
                 <div className="flex items-center gap-4">
                   <div className="text-3xl font-bold text-gold">
@@ -406,7 +464,9 @@ export function CompetitionDetailPage() {
                             <span>+</span>
                           </Button>
                         </div>
-                        <span className="text-sm text-muted-foreground">£{(competition.ticketPrice ?? 0).toFixed(2)} per ticket</span>
+                        <span className="text-sm text-muted-foreground">
+                          £{(competition.ticketPrice ?? 0).toFixed(2)} per ticket
+                        </span>
                       </div>
                     </div>
 
@@ -414,7 +474,7 @@ export function CompetitionDetailPage() {
                     <div className="space-y-2">
                       <p className="text-sm text-muted-foreground">Quick add:</p>
                       <div className="grid grid-cols-4 gap-2">
-                        {[5, 25, 50, 100].map(amount => (
+                        {[5, 25, 50, 100].map((amount) => (
                           <Button
                             key={amount}
                             type="button"
@@ -487,13 +547,17 @@ export function CompetitionDetailPage() {
                     <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center">
                       <HelpCircle className="w-5 h-5 text-gold" />
                     </div>
-                    <h2 className="text-xl font-bold text-foreground">Frequently Asked Questions</h2>
+                    <h2 className="text-xl font-bold text-foreground">
+                      Frequently Asked Questions
+                    </h2>
                   </div>
                   <div className="space-y-4">
                     {faqs.map((faq, i) => (
                       <div key={i} className="border border-white/5 rounded-xl p-5">
                         <p className="font-medium text-foreground mb-2">{faq.question}</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {faq.answer}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -514,17 +578,17 @@ export function CompetitionDetailPage() {
                     ? Math.round(((comp.ticketsSold ?? 0) / comp.maxTickets) * 100)
                     : 0;
                   return (
-                    <Link
-                      key={comp._id}
-                      to={`/competitions/${comp.slug}`}
-                      className="group block"
-                    >
+                    <Link key={comp._id} to={`/competitions/${comp.slug}`} className="group block">
                       <div className="relative overflow-hidden rounded-[1.5rem]">
                         <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10 hover:ring-gold/30 transition-all duration-500">
                           <div className="rounded-[calc(1.5rem-0.375rem)] bg-card overflow-hidden">
                             <div className="aspect-square bg-gradient-to-br from-gold/10 to-gold/5 relative">
                               {comp.prizeImageUrl || comp.imageUrl ? (
-                                <img src={comp.prizeImageUrl || comp.imageUrl} alt={comp.title} className="w-full h-full object-cover" />
+                                <img
+                                  src={comp.prizeImageUrl || comp.imageUrl}
+                                  alt={comp.title}
+                                  className="w-full h-full object-cover"
+                                />
                               ) : (
                                 <div className="absolute inset-0 flex items-center justify-center">
                                   <Trophy className="w-10 h-10 text-gold/30" />
@@ -536,8 +600,12 @@ export function CompetitionDetailPage() {
                                 {comp.prizeTitle || comp.title}
                               </p>
                               <div className="flex items-center justify-between mt-2">
-                                <span className="text-gold font-bold text-sm">£{((comp.ticketPrice ?? 0)).toFixed(2)}</span>
-                                <span className="text-xs text-muted-foreground">{soldPct}% sold</span>
+                                <span className="text-gold font-bold text-sm">
+                                  £{(comp.ticketPrice ?? 0).toFixed(2)}
+                                </span>
+                                <span className="text-xs text-muted-foreground">
+                                  {soldPct}% sold
+                                </span>
                               </div>
                             </div>
                           </div>

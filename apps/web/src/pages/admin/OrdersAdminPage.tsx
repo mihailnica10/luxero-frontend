@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { AdminLayout } from "../../components/layout/AdminLayout";
-import { Card, CardContent } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
 import { api } from "@luxero/api-client";
 import type { AdminOrder, ApiResponse } from "@luxero/types";
+import { Card, CardContent, Skeleton } from "@luxero/ui";
+import { useEffect, useState } from "react";
+import { AdminLayout } from "../../components/layout/AdminLayout";
 
 export function OrdersAdminPage() {
   const [orders, setOrders] = useState<AdminOrder[]>([]);
@@ -76,12 +75,24 @@ export function OrdersAdminPage() {
                   <tbody>
                     {[...Array(5)].map((_, i) => (
                       <tr key={i} className="border-b border-gold/10">
-                        <td className="p-4"><Skeleton className="h-5 w-16" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-40" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-20" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-16" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-12" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-24" shimmer /></td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-16" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-40" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-20" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-16" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-12" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-24" shimmer />
+                        </td>
                       </tr>
                     ))}
                   </tbody>

@@ -1,9 +1,8 @@
+import { Button, Card, CardContent } from "@luxero/ui";
 import { PartyPopper, Ticket, Trophy } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Card, CardContent } from "@luxero/ui";
 
 export function CheckoutSuccessPage() {
   const location = useLocation();

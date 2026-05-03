@@ -1,5 +1,5 @@
-import { AdminLayout } from "../../components/layout/AdminLayout";
 import { Card, CardContent } from "@luxero/ui";
+import { AdminLayout } from "../../components/layout/AdminLayout";
 
 export function TestimonialsAdminPage() {
   return (

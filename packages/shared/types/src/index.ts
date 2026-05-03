@@ -247,3 +247,7 @@ export interface AdminReferralPurchase {
   commission: number;
   createdAt: string;
 }
+
+// Shared model types (no Mongoose dependency)
+export * from "./models/index";
+export * from "./auth";

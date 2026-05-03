@@ -1,11 +1,11 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse } from "@luxero/types";
+import { Button } from "@luxero/ui";
 import { ArrowRight, Calendar, Quote, Trophy } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { useEffect, useState } from "react";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface WinnerStats {
   totalPrizeValue: number;
@@ -28,7 +28,12 @@ interface Winner {
 
 function WinnerCard({ winner }: { winner: Winner }) {
   const initials = winner.userId?.fullName
-    ? winner.userId.fullName.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()
+    ? winner.userId.fullName
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase()
     : winner.displayName?.[0]?.toUpperCase() || "W";
 
   return (
@@ -39,7 +44,11 @@ function WinnerCard({ winner }: { winner: Winner }) {
           <div className="flex items-start gap-3 mb-4">
             <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold/20 to-gold/10 flex items-center justify-center flex-shrink-0 border border-gold/20">
               {winner.userId?.avatarUrl ? (
-                <img src={winner.userId.avatarUrl} alt="" className="w-full h-full rounded-2xl object-cover" />
+                <img
+                  src={winner.userId.avatarUrl}
+                  alt=""
+                  className="w-full h-full rounded-2xl object-cover"
+                />
               ) : (
                 <span className="text-lg font-bold text-gold">{initials}</span>
               )}
@@ -165,9 +174,7 @@ export function WinnersPage() {
             <div className="relative overflow-hidden rounded-[1.5rem]">
               <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10">
                 <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-6 text-center">
-                  <p className="text-3xl font-bold text-gold mb-1">
-                    {stats.totalWinnersAllTime}
-                  </p>
+                  <p className="text-3xl font-bold text-gold mb-1">{stats.totalWinnersAllTime}</p>
                   <p className="text-sm text-muted-foreground">Happy Members</p>
                 </div>
               </div>
@@ -218,7 +225,10 @@ export function WinnersPage() {
                   </Button>
                 </Link>
                 <Link to="/auth/sign-up">
-                  <Button variant="outline" className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-8">
+                  <Button
+                    variant="outline"
+                    className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-8"
+                  >
                     Create Account
                   </Button>
                 </Link>

@@ -1,12 +1,11 @@
 "use client";
 
-import { ChevronRight, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { useEffect, useRef, useState } from "react";
 import type { Competition } from "@luxero/types";
+import { Badge, Button } from "@luxero/ui";
 import { cn } from "@luxero/utils";
+import { ChevronRight, Clock } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface CategorySectionProps {
   title: string;
@@ -106,9 +105,7 @@ export function CategorySection({
         {/* Section Header */}
         <div className="mb-6 sm:mb-8 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">
-              {title}
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">{title}</h2>
             {description && (
               <p className="text-sm sm:text-base text-muted-foreground">{description}</p>
             )}
@@ -133,7 +130,9 @@ export function CategorySection({
             >
               <div className="relative h-[500px] sm:h-[550px] overflow-hidden rounded-2xl sm:rounded-3xl">
                 {currentCompetition.imageUrl ? (
-                  <Link to={`/competitions/${currentCompetition.slug || currentCompetition.id || currentCompetition._id}`}>
+                  <Link
+                    to={`/competitions/${currentCompetition.slug || currentCompetition.id || currentCompetition._id}`}
+                  >
                     <img
                       src={currentCompetition.imageUrl}
                       alt={currentCompetition.title}
@@ -141,7 +140,9 @@ export function CategorySection({
                     />
                   </Link>
                 ) : (
-                  <Link to={`/competitions/${currentCompetition.slug || currentCompetition.id || currentCompetition._id}`}>
+                  <Link
+                    to={`/competitions/${currentCompetition.slug || currentCompetition.id || currentCompetition._id}`}
+                  >
                     <div className="w-full h-full bg-gradient-to-br from-gold/30 to-gold/5" />
                   </Link>
                 )}
@@ -157,14 +158,15 @@ export function CategorySection({
                   </div>
 
                   <div className="flex-1">
-                    <Link to={`/competitions/${currentCompetition.slug || currentCompetition.id || currentCompetition._id}`}>
+                    <Link
+                      to={`/competitions/${currentCompetition.slug || currentCompetition.id || currentCompetition._id}`}
+                    >
                       <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 line-clamp-2">
                         {currentCompetition.title}
                       </h3>
                     </Link>
                     <p className="text-xs sm:text-sm text-gray-300 line-clamp-2 mb-3 sm:mb-4">
-                      {currentCompetition.shortDescription ||
-                        currentCompetition.description}
+                      {currentCompetition.shortDescription || currentCompetition.description}
                     </p>
 
                     {/* Price */}
@@ -173,21 +175,19 @@ export function CategorySection({
                         const tp = getTicketPrice(currentCompetition);
                         const op = currentCompetition.originalPrice;
                         const hasDiscount = op && op > tp;
-                        return (
-                          hasDiscount ? (
-                            <div className="flex items-center gap-2 sm:gap-3">
-                              <span className="text-lg sm:text-xl font-bold text-gray-400 line-through">
-                                £{op.toFixed(2)}
-                              </span>
-                              <span className="text-2xl sm:text-3xl font-bold text-gold">
-                                £{tp.toFixed(2)}
-                              </span>
-                            </div>
-                          ) : (
+                        return hasDiscount ? (
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <span className="text-lg sm:text-xl font-bold text-gray-400 line-through">
+                              £{op.toFixed(2)}
+                            </span>
                             <span className="text-2xl sm:text-3xl font-bold text-gold">
                               £{tp.toFixed(2)}
                             </span>
-                          )
+                          </div>
+                        ) : (
+                          <span className="text-2xl sm:text-3xl font-bold text-gold">
+                            £{tp.toFixed(2)}
+                          </span>
                         );
                       })()}
                     </div>
@@ -196,7 +196,10 @@ export function CategorySection({
                     <div className="mb-3 sm:mb-4">
                       <div className="flex justify-between text-xs text-gray-300 mb-1">
                         <span>
-                          {(getTotalTickets(currentCompetition) - getSoldTickets(currentCompetition)).toLocaleString()} left
+                          {(
+                            getTotalTickets(currentCompetition) - getSoldTickets(currentCompetition)
+                          ).toLocaleString()}{" "}
+                          left
                         </span>
                         <span>{pct}% sold</span>
                       </div>
@@ -262,9 +265,7 @@ export function CategorySection({
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
                     "h-1.5 rounded-full transition-all duration-300",
-                    i === currentIndex
-                      ? "w-8 sm:w-12 bg-gold"
-                      : "w-6 sm:w-8 bg-white/30"
+                    i === currentIndex ? "w-8 sm:w-12 bg-gold" : "w-6 sm:w-8 bg-white/30"
                   )}
                   aria-label={`Go to slide ${i + 1}`}
                 />
@@ -291,7 +292,11 @@ export function CategorySection({
             const hasDiscount = comp.originalPrice && comp.originalPrice > tp;
 
             return (
-              <Link key={comp.id || comp._id} to={`/competitions/${comp.slug || comp.id || comp._id}`} className="group">
+              <Link
+                key={comp.id || comp._id}
+                to={`/competitions/${comp.slug || comp.id || comp._id}`}
+                className="group"
+              >
                 <div className="relative h-full overflow-hidden rounded-xl border border-gold/10 bg-card hover:shadow-lg hover:shadow-gold/10 transition-all duration-300 hover:-translate-y-1">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -303,9 +308,7 @@ export function CategorySection({
                       />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
-                        <span className="text-gold/40 text-4xl font-bold">
-                          {title.charAt(0)}
-                        </span>
+                        <span className="text-gold/40 text-4xl font-bold">{title.charAt(0)}</span>
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

@@ -1,8 +1,8 @@
-import { ArrowRight, CheckCircle, Shield, Heart, Trophy } from "lucide-react";
+import { Button } from "@luxero/ui";
+import { ArrowRight, CheckCircle, Heart, Shield, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
 
 const features = [
   {
@@ -41,7 +41,8 @@ export function AboutPage() {
             </span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We&apos;re on a mission to make luxury accessible to everyone through fair, transparent prize competitions.
+            We&apos;re on a mission to make luxury accessible to everyone through fair, transparent
+            prize competitions.
           </p>
         </div>
 
@@ -56,10 +57,12 @@ export function AboutPage() {
                 <h2 className="text-xl font-semibold text-foreground">Our Mission</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Luxero was founded with a simple belief: everyone deserves a chance to win amazing prizes. We curate exclusive luxury items and offer them at accessible ticket prices.
+                Luxero was founded with a simple belief: everyone deserves a chance to win amazing
+                prizes. We curate exclusive luxury items and offer them at accessible ticket prices.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Every competition is conducted with complete transparency, using certified random number generation to ensure fairness for all participants.
+                Every competition is conducted with complete transparency, using certified random
+                number generation to ensure fairness for all participants.
               </p>
             </div>
           </div>
@@ -106,10 +109,13 @@ export function AboutPage() {
                 <h2 className="text-xl font-semibold text-foreground">Our Commitment</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                We are committed to providing a safe, fair, and enjoyable experience for all our members. Our team works tirelessly to ensure every competition meets the highest standards of integrity.
+                We are committed to providing a safe, fair, and enjoyable experience for all our
+                members. Our team works tirelessly to ensure every competition meets the highest
+                standards of integrity.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                From the prizes we select to the draws we conduct, every step is designed with our members in mind. Your trust means everything to us.
+                From the prizes we select to the draws we conduct, every step is designed with our
+                members in mind. Your trust means everything to us.
               </p>
             </div>
           </div>
@@ -129,7 +135,10 @@ export function AboutPage() {
               </Button>
             </Link>
             <Link to="/how-it-works">
-              <Button variant="outline" className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-8">
+              <Button
+                variant="outline"
+                className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-8"
+              >
                 How It Works
               </Button>
             </Link>

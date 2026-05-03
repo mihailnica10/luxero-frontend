@@ -1,10 +1,9 @@
+import { api } from "@luxero/api-client";
+import type { AdminReferralPurchase, ApiResponse } from "@luxero/types";
+import { Card, CardContent, Skeleton } from "@luxero/ui";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AdminLayout } from "../../components/layout/AdminLayout";
-import { Card, CardContent } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { AdminReferralPurchase, ApiResponse } from "@luxero/types";
 
 export function ReferralsAdminPage() {
   const [referrals, setReferrals] = useState<AdminReferralPurchase[]>([]);
@@ -88,7 +87,9 @@ export function ReferralsAdminPage() {
                   <thead>
                     <tr className="border-b border-gold/10 text-left">
                       <th className="p-4 text-sm font-medium text-muted-foreground">Referrer</th>
-                      <th className="p-4 text-sm font-medium text-muted-foreground">Referred User</th>
+                      <th className="p-4 text-sm font-medium text-muted-foreground">
+                        Referred User
+                      </th>
                       <th className="p-4 text-sm font-medium text-muted-foreground">Order ID</th>
                       <th className="p-4 text-sm font-medium text-muted-foreground">Commission</th>
                       <th className="p-4 text-sm font-medium text-muted-foreground">Date</th>
@@ -97,11 +98,21 @@ export function ReferralsAdminPage() {
                   <tbody>
                     {[...Array(5)].map((_, i) => (
                       <tr key={i} className="border-b border-gold/10">
-                        <td className="p-4"><Skeleton className="h-5 w-40" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-40" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-16" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-20" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-24" shimmer /></td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-40" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-40" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-16" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-20" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-24" shimmer />
+                        </td>
                       </tr>
                     ))}
                   </tbody>

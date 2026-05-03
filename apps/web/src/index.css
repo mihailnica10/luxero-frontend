@@ -210,8 +210,13 @@
 
   /* Skeleton default — subtle gold opacity pulse */
   @keyframes skeleton-default {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
   }
 
   .skeleton-default {
@@ -233,7 +238,7 @@
     background: linear-gradient(
       90deg,
       oklch(0.78 0.14 85 / 0.05) 0%,
-      oklch(0.78 0.14 85 / 0.20) 50%,
+      oklch(0.78 0.14 85 / 0.2) 50%,
       oklch(0.78 0.14 85 / 0.05) 100%
     );
     background-size: 200% 100%;

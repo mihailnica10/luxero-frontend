@@ -1,16 +1,15 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse, Category, Competition } from "@luxero/types";
+import { Button, Skeleton } from "@luxero/ui";
 import { ArrowRight, Shield, Users, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Footer } from "../components/layout/Footer";
-import { Header } from "../components/layout/Header";
-import { HeroSlider } from "../components/home/HeroSlider";
-import { WinnersShowcase } from "../components/home/WinnersShowcase";
 import { CategorySection } from "../components/home/CategorySection";
 import { CompetitionCard } from "../components/home/CompetitionCard";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import { useEffect, useState } from "react";
-import type { ApiResponse, Category, Competition } from "@luxero/types";
+import { HeroSlider } from "../components/home/HeroSlider";
+import { WinnersShowcase } from "../components/home/WinnersShowcase";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
 
 export function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -74,7 +73,6 @@ export function HomePage() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <main className="flex-1">
-
         {/* Initial loading skeleton */}
         {initialLoading && (
           <div className="relative">
@@ -151,11 +149,7 @@ export function HomePage() {
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   {endingSoon.map((comp) => (
-                    <CompetitionCard
-                      key={comp.id}
-                      competition={comp}
-                      variant="compact"
-                    />
+                    <CompetitionCard key={comp.id} competition={comp} variant="compact" />
                   ))}
                 </div>
               )}

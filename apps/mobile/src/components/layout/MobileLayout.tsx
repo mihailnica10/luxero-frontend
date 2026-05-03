@@ -1,6 +1,6 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { Home, Ticket, ShoppingCart, User } from "lucide-react";
 import { cn } from "@luxero/utils";
+import { Home, ShoppingCart, Ticket, User } from "lucide-react";
+import { Outlet, useLocation } from "react-router-dom";
 
 const tabs = [
   { path: "/", label: "Home", icon: Home },

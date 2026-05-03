@@ -1,5 +1,19 @@
 "use client";
 
+import { useAuth } from "@luxero/auth";
+import { useCart } from "@luxero/cart";
+import {
+  Badge,
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  Sheet,
+  SheetContent,
+  Skeleton,
+} from "@luxero/ui";
 import {
   BookOpen,
   Gift,
@@ -19,19 +33,6 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@luxero/ui";
-import { Sheet, SheetContent } from "@luxero/ui";
-import { useAuth } from "@luxero/auth";
-import { useCart } from "@luxero/cart";
 import { CategoryNav } from "../home/CategoryNav";
 
 // All nav links — single source of truth for both desktop nav bar and mobile sheet
@@ -67,10 +68,9 @@ function UserDropdown() {
         .join("")
         .toUpperCase()
         .slice(0, 2)
-    : user?.email?.[0]?.toUpperCase() ?? "?";
+    : (user?.email?.[0]?.toUpperCase() ?? "?");
 
-  const displayName =
-    user?.fullName?.split(" ")[0] ?? user?.email?.split("@")[0] ?? "Account";
+  const displayName = user?.fullName?.split(" ")[0] ?? user?.email?.split("@")[0] ?? "Account";
 
   const handleLogout = () => {
     logout();
@@ -102,9 +102,7 @@ function UserDropdown() {
           <p className="text-sm font-semibold text-foreground truncate">
             {user?.fullName ?? displayName}
           </p>
-          <p className="text-xs text-muted-foreground truncate mt-0.5">
-            {user?.email}
-          </p>
+          <p className="text-xs text-muted-foreground truncate mt-0.5">{user?.email}</p>
         </div>
 
         {/* Dashboard links */}
@@ -192,7 +190,6 @@ export function Header() {
       <div className="bg-card/95 backdrop-blur-2xl border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center gap-6">
-
             {/* Logo */}
             <Link
               to="/"
@@ -282,12 +279,8 @@ export function Header() {
 
       {/* ── Mobile sheet menu ────────────────────────────────────────────── */}
       <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent
-          side="right"
-          className="w-full max-w-sm p-0 bg-card border-l border-gold/10"
-        >
+        <SheetContent side="right" className="w-full max-w-sm p-0 bg-card border-l border-gold/10">
           <div className="flex flex-col h-full">
-
             {/* Sheet header */}
             <div className="flex items-center justify-between p-5 border-b border-gold/10">
               <Link
@@ -366,7 +359,10 @@ export function Header() {
               ) : (
                 <div className="flex gap-2">
                   <Link to="/auth/login" className="flex-1" onClick={() => setMobileOpen(false)}>
-                    <Button variant="outline" className="w-full border-gold/30 hover:bg-gold/10 transition-all">
+                    <Button
+                      variant="outline"
+                      className="w-full border-gold/30 hover:bg-gold/10 transition-all"
+                    >
                       Sign In
                     </Button>
                   </Link>

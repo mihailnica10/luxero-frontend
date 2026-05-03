@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { Footer } from "../components/layout/Footer";
-import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
 import { api } from "@luxero/api-client";
 import type { ApiResponse } from "@luxero/types";
+import { Button, Skeleton } from "@luxero/ui";
+import { useMutation } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
 
 export function VerifyEmailPage() {
   const [searchParams] = useSearchParams();
@@ -64,14 +63,26 @@ export function VerifyEmailPage() {
             {status === "success" && (
               <>
                 <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-8 h-8 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 </div>
                 <h1 className="text-2xl font-bold tracking-tight mb-2">
                   <span className="text-gold-gradient">Email Verified!</span>
                 </h1>
-                <p className="text-muted-foreground text-sm mb-6">Your email has been verified! You can now sign in.</p>
+                <p className="text-muted-foreground text-sm mb-6">
+                  Your email has been verified! You can now sign in.
+                </p>
                 <Link to="/auth/login">
                   <Button className="w-full bg-gold hover:bg-gold-dark text-primary-foreground font-semibold">
                     Sign In
@@ -83,8 +94,18 @@ export function VerifyEmailPage() {
             {(status === "error" || status === "expired") && (
               <>
                 <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-8 h-8 text-red-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </div>
                 <h1 className="text-2xl font-bold tracking-tight mb-2">Verification Failed</h1>
@@ -97,7 +118,9 @@ export function VerifyEmailPage() {
                 {status === "expired" && email && (
                   <div className="space-y-3">
                     {resendMessage && (
-                      <p className="text-sm text-green-400 bg-green-500/10 p-2 rounded-lg">{resendMessage}</p>
+                      <p className="text-sm text-green-400 bg-green-500/10 p-2 rounded-lg">
+                        {resendMessage}
+                      </p>
                     )}
                     <Button
                       variant="outline"

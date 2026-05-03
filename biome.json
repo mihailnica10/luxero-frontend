@@ -2,6 +2,7 @@
   "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
   "linter": {
     "enabled": true,
+    "includes": ["src/**"],
     "rules": {
       "recommended": true,
       "style": {
@@ -25,6 +26,9 @@
         "noArrayIndexKey": "off"
       }
     }
+  },
+  "files": {
+    "maxSize": 2000000
   },
   "formatter": {
     "indentStyle": "space",

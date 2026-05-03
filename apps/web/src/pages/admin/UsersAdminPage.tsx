@@ -1,11 +1,9 @@
+import { api } from "@luxero/api-client";
+import type { AdminUser, ApiResponse } from "@luxero/types";
+import { Badge, Card, CardContent, Skeleton } from "@luxero/ui";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { AdminLayout } from "../../components/layout/AdminLayout";
-import { Badge } from "@luxero/ui";
-import { Card, CardContent } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { AdminUser, ApiResponse } from "@luxero/types";
 
 export function UsersAdminPage() {
   const [users, setUsers] = useState<AdminUser[]>([]);
@@ -112,11 +110,21 @@ export function UsersAdminPage() {
                   <tbody>
                     {[...Array(5)].map((_, i) => (
                       <tr key={i} className="border-b border-gold/10">
-                        <td className="p-4"><Skeleton className="h-5 w-48" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-16" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-20" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-24" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-28" shimmer /></td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-48" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-16" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-20" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-24" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-28" shimmer />
+                        </td>
                       </tr>
                     ))}
                   </tbody>

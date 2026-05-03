@@ -1,13 +1,11 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse } from "@luxero/types";
+import { Button, ProtectedRoute, Skeleton } from "@luxero/ui";
 import { ChevronLeft, ChevronRight, Package } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { ProtectedRoute } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface OrderItem {
   _id: string;
@@ -19,16 +17,38 @@ interface OrderItem {
 }
 
 const STATUS_CONFIG: Record<string, { label: string; dot: string; badge: string }> = {
-  pending: { label: "Pending", dot: "bg-amber-400", badge: "text-amber-400 bg-amber-400/10 border-amber-400/20" },
-  paid:    { label: "Paid",    dot: "bg-emerald-400", badge: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20" },
-  failed:  { label: "Failed", dot: "bg-red-400", badge: "text-red-400 bg-red-400/10 border-red-400/20" },
-  refunded:{ label: "Refunded",dot: "bg-blue-400", badge: "text-blue-400 bg-blue-400/10 border-blue-400/20" },
+  pending: {
+    label: "Pending",
+    dot: "bg-amber-400",
+    badge: "text-amber-400 bg-amber-400/10 border-amber-400/20",
+  },
+  paid: {
+    label: "Paid",
+    dot: "bg-emerald-400",
+    badge: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+  },
+  failed: {
+    label: "Failed",
+    dot: "bg-red-400",
+    badge: "text-red-400 bg-red-400/10 border-red-400/20",
+  },
+  refunded: {
+    label: "Refunded",
+    dot: "bg-blue-400",
+    badge: "text-blue-400 bg-blue-400/10 border-blue-400/20",
+  },
 };
 
 function StatusBadge({ status }: { status: string }) {
-  const cfg = STATUS_CONFIG[status] || { label: status, dot: "bg-muted-foreground", badge: "text-muted-foreground bg-muted/10 border-muted/20" };
+  const cfg = STATUS_CONFIG[status] || {
+    label: status,
+    dot: "bg-muted-foreground",
+    badge: "text-muted-foreground bg-muted/10 border-muted/20",
+  };
   return (
-    <span className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border ${cfg.badge}`}>
+    <span
+      className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border ${cfg.badge}`}
+    >
       <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
       {cfg.label}
     </span>
@@ -102,7 +122,10 @@ function OrdersContent() {
                 const itemCount = order.items?.length || 0;
                 const totalItems = order.items?.reduce((s, i) => s + i.quantity, 0) || 0;
                 return (
-                  <div key={order._id} className="group p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10 hover:bg-gold/5 hover:ring-gold/30 transition-all duration-500">
+                  <div
+                    key={order._id}
+                    className="group p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10 hover:bg-gold/5 hover:ring-gold/30 transition-all duration-500"
+                  >
                     <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-4">
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex items-center gap-4">
@@ -113,7 +136,11 @@ function OrdersContent() {
                             <p className="font-mono text-sm font-bold">#{order.orderNumber}</p>
                             <div className="flex items-center gap-2 mt-1">
                               <span className="text-xs text-muted-foreground">
-                                {new Date(order.createdAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                                {new Date(order.createdAt).toLocaleDateString("en-GB", {
+                                  day: "numeric",
+                                  month: "short",
+                                  year: "numeric",
+                                })}
                               </span>
                               {itemCount > 0 && (
                                 <span className="text-xs text-muted-foreground">
@@ -125,7 +152,9 @@ function OrdersContent() {
                         </div>
                         <div className="flex items-center gap-4">
                           <StatusBadge status={order.status} />
-                          <span className="font-bold text-gold text-lg">£{order.total.toFixed(2)}</span>
+                          <span className="font-bold text-gold text-lg">
+                            £{order.total.toFixed(2)}
+                          </span>
                         </div>
                       </div>
                     </div>

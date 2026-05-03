@@ -1,8 +1,8 @@
 import { api } from "@luxero/api-client";
 import type { ApiResponse, Competition } from "@luxero/types";
+import { Search, Ticket } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, Ticket } from "lucide-react";
 
 const categories = [
   { id: "all", label: "All" },
@@ -114,7 +114,9 @@ export function CompetitionsPage() {
                   <div className="flex-1 p-3 min-w-0">
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <p className="font-medium text-sm line-clamp-2 leading-tight">{comp.title}</p>
-                      <span className={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold ${status.className}`}>
+                      <span
+                        className={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold ${status.className}`}
+                      >
                         {status.label}
                       </span>
                     </div>
@@ -125,7 +127,9 @@ export function CompetitionsPage() {
 
                     <div className="mt-2">
                       <div className="flex justify-between text-xs text-muted-foreground mb-1">
-                        <span>{comp.soldTickets}/{comp.totalTickets} sold</span>
+                        <span>
+                          {comp.soldTickets}/{comp.totalTickets} sold
+                        </span>
                         <span>{comp.totalTickets - comp.soldTickets} left</span>
                       </div>
                       <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
@@ -147,7 +151,7 @@ export function CompetitionsPage() {
                   </div>
                 </div>
               </Link>
-            )
+            );
           })
         )}
       </div>

@@ -1,13 +1,11 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse } from "@luxero/types";
+import { Button, ProtectedRoute, Skeleton } from "@luxero/ui";
 import { Gift, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { ProtectedRoute } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface Win {
   _id: string;
@@ -93,12 +91,19 @@ function WinsContent() {
               const imageUrl = win.competitionId?.prizeImageUrl;
 
               return (
-                <div key={win._id} className="group p-1.5 rounded-[2rem] bg-gold/5 ring-1 ring-gold/20 hover:ring-gold/40 transition-all duration-500">
+                <div
+                  key={win._id}
+                  className="group p-1.5 rounded-[2rem] bg-gold/5 ring-1 ring-gold/20 hover:ring-gold/40 transition-all duration-500"
+                >
                   <div className="rounded-[calc(2rem-0.375rem)] bg-card overflow-hidden">
                     {/* Prize image */}
                     <div className="relative h-40 bg-gradient-to-br from-gold/20 to-gold/5">
                       {imageUrl ? (
-                        <img src={imageUrl} alt={win.prizeTitle || win.competitionId?.title} className="w-full h-full object-cover" />
+                        <img
+                          src={imageUrl}
+                          alt={win.prizeTitle || win.competitionId?.title}
+                          className="w-full h-full object-cover"
+                        />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="w-16 h-16 rounded-2xl bg-gold/20 flex items-center justify-center">
@@ -135,7 +140,11 @@ function WinsContent() {
                           </span>
                         )}
                         <span className="text-xs text-muted-foreground">
-                          {new Date(win.drawnAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}
+                          {new Date(win.drawnAt).toLocaleDateString("en-GB", {
+                            day: "numeric",
+                            month: "short",
+                            year: "numeric",
+                          })}
                         </span>
                       </div>
 
@@ -149,7 +158,10 @@ function WinsContent() {
                       {/* CTA */}
                       {!win.claimed && (
                         <div className="mt-4 flex items-center gap-3">
-                          <Button size="sm" className="bg-gold hover:bg-gold-dark text-primary-foreground font-semibold rounded-full px-5">
+                          <Button
+                            size="sm"
+                            className="bg-gold hover:bg-gold-dark text-primary-foreground font-semibold rounded-full px-5"
+                          >
                             <Gift className="w-4 h-4 mr-2" />
                             Claim Prize
                           </Button>
@@ -158,7 +170,9 @@ function WinsContent() {
                       )}
                       {win.claimed && (
                         <div className="mt-4 flex items-center gap-2">
-                          <span className="text-xs text-emerald-400 font-medium">Prize claimed ✓</span>
+                          <span className="text-xs text-emerald-400 font-medium">
+                            Prize claimed ✓
+                          </span>
                         </div>
                       )}
                     </div>

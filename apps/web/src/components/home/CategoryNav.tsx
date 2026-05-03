@@ -1,18 +1,11 @@
 "use client";
 
-import {
-  Car,
-  ChevronRight,
-  Smartphone,
-  Trophy,
-  Watch,
-  Zap,
-} from "lucide-react";
+import { api } from "@luxero/api-client";
+import type { ApiResponse, Category } from "@luxero/types";
+import { Skeleton } from "@luxero/ui";
+import { Car, ChevronRight, Smartphone, Trophy, Watch, Zap } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { api } from "@luxero/api-client";
-import { Skeleton } from "@luxero/ui";
-import type { ApiResponse, Category } from "@luxero/types";
 
 interface NavCategory {
   id: string;
@@ -117,8 +110,7 @@ export function CategoryNav() {
     }
   };
 
-  const allCategories =
-    dynamicCategories.length > 1 ? dynamicCategories : defaultCategories;
+  const allCategories = dynamicCategories.length > 1 ? dynamicCategories : defaultCategories;
 
   if (isLoading) {
     return (
@@ -170,18 +162,20 @@ export function CategoryNav() {
                         : "text-muted-foreground hover:text-foreground hover:bg-gold/5"
                     }`}
                   >
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-200 ${
-                      isActive ? "bg-gold/20" : "bg-gold/5 group-hover:bg-gold/10"
-                    }`}>
+                    <div
+                      className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors duration-200 ${
+                        isActive ? "bg-gold/20" : "bg-gold/5 group-hover:bg-gold/10"
+                      }`}
+                    >
                       <Icon className="w-3.5 h-3.5" />
                     </div>
-                    <span className="whitespace-nowrap text-sm font-medium">
-                      {category.label}
-                    </span>
+                    <span className="whitespace-nowrap text-sm font-medium">{category.label}</span>
                     {/* Active indicator - bottom line */}
-                    <span className={`absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-gold transition-all duration-300 ${
-                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-                    }`} />
+                    <span
+                      className={`absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-gold transition-all duration-300 ${
+                        isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+                      }`}
+                    />
                   </a>
                 );
               })}

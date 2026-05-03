@@ -1,8 +1,8 @@
+import { Button } from "@luxero/ui";
 import { AlertCircle, CheckCircle, Mail, MapPin, MessageSquare, Phone, User } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Link } from "react-router-dom";
 
 export function FreePostalEntryPage() {
   return (
@@ -64,7 +64,10 @@ export function FreePostalEntryPage() {
                   { icon: User, text: "Your full name" },
                   { icon: MapPin, text: "Your full postal address (including postcode)" },
                   { icon: Phone, text: "Your phone number and email address" },
-                  { icon: MessageSquare, text: "The competition name and your answer to any question" },
+                  {
+                    icon: MessageSquare,
+                    text: "The competition name and your answer to any question",
+                  },
                 ].map(({ icon: Icon, text }, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -92,12 +95,36 @@ export function FreePostalEntryPage() {
               <h2 className="text-xl font-semibold mb-6">Entry Rules</h2>
               <ul className="space-y-4">
                 {[
-                  { icon: CheckCircle, color: "text-emerald-400", text: "You may enter as many different competitions as you like — one entry per competition" },
-                  { icon: AlertCircle, color: "text-amber-400", text: "Multiple entries for the same competition in the same envelope will not be accepted" },
-                  { icon: CheckCircle, color: "text-emerald-400", text: "Each entry must be sent in a separate envelope with its own stamped addressed envelope" },
-                  { icon: AlertCircle, color: "text-amber-400", text: "You must have an account with Luxero to claim any prize won via postal entry" },
-                  { icon: CheckCircle, color: "text-emerald-400", text: "We'll email you to confirm your entry and notify you if you've won" },
-                  { icon: AlertCircle, color: "text-amber-400", text: "Entries must be received before the competition draw date to be valid" },
+                  {
+                    icon: CheckCircle,
+                    color: "text-emerald-400",
+                    text: "You may enter as many different competitions as you like — one entry per competition",
+                  },
+                  {
+                    icon: AlertCircle,
+                    color: "text-amber-400",
+                    text: "Multiple entries for the same competition in the same envelope will not be accepted",
+                  },
+                  {
+                    icon: CheckCircle,
+                    color: "text-emerald-400",
+                    text: "Each entry must be sent in a separate envelope with its own stamped addressed envelope",
+                  },
+                  {
+                    icon: AlertCircle,
+                    color: "text-amber-400",
+                    text: "You must have an account with Luxero to claim any prize won via postal entry",
+                  },
+                  {
+                    icon: CheckCircle,
+                    color: "text-emerald-400",
+                    text: "We'll email you to confirm your entry and notify you if you've won",
+                  },
+                  {
+                    icon: AlertCircle,
+                    color: "text-amber-400",
+                    text: "Entries must be received before the competition draw date to be valid",
+                  },
                 ].map(({ icon: Icon, color, text }, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <Icon className={`w-5 h-5 ${color} mt-0.5 flex-shrink-0`} />

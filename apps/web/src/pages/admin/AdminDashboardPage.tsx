@@ -1,7 +1,7 @@
+import { Card, CardContent } from "@luxero/ui";
 import { ArrowRight, Gift, ShoppingBag, Tag, Ticket, TrendingUp, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AdminLayout } from "../../components/layout/AdminLayout";
-import { Card, CardContent } from "@luxero/ui";
 
 export function AdminDashboardPage() {
   // Placeholder stats

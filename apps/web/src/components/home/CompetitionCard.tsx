@@ -1,12 +1,11 @@
 "use client";
 
-import { Clock, Trophy, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { useEffect, useState } from "react";
 import type { Competition } from "@luxero/types";
+import { Badge, Button } from "@luxero/ui";
 import { cn } from "@luxero/utils";
+import { Clock, Trophy, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface CompetitionCardProps {
   competition: Competition;
@@ -42,10 +41,7 @@ export function CompetitionCard({ competition: comp, variant = "default" }: Comp
   const soldTickets = comp.ticketsSold ?? comp.soldTickets ?? 0;
 
   const isActive = comp.status === "active";
-  const percentageSold =
-    totalTickets > 0
-      ? Math.min((soldTickets / totalTickets) * 100, 100)
-      : 0;
+  const percentageSold = totalTickets > 0 ? Math.min((soldTickets / totalTickets) * 100, 100) : 0;
   const hasDiscount = comp.originalPrice && comp.originalPrice > ticketPrice;
   const discountPercent = hasDiscount
     ? Math.round(((comp.originalPrice! - ticketPrice) / comp.originalPrice!) * 100)
@@ -72,10 +68,7 @@ export function CompetitionCard({ competition: comp, variant = "default" }: Comp
 
   if (variant === "compact") {
     return (
-      <Link
-        to={`/competitions/${comp.slug || comp.id}`}
-        className="group block"
-      >
+      <Link to={`/competitions/${comp.slug || comp.id}`} className="group block">
         <div className="relative rounded-2xl bg-card border border-gold/10 overflow-hidden hover:border-gold/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-gold/10">
           {/* Image */}
           <div className="relative h-40 overflow-hidden">
@@ -119,17 +112,16 @@ export function CompetitionCard({ competition: comp, variant = "default" }: Comp
                   <span className="text-xs text-muted-foreground line-through">
                     £{comp.originalPrice?.toFixed(2)}
                   </span>
-                  <span className="text-lg font-bold text-gold">
-                    £{ticketPrice.toFixed(2)}
-                  </span>
-                  <Badge variant="secondary" className="bg-green-600 text-white text-[10px] px-1 py-0">
+                  <span className="text-lg font-bold text-gold">£{ticketPrice.toFixed(2)}</span>
+                  <Badge
+                    variant="secondary"
+                    className="bg-green-600 text-white text-[10px] px-1 py-0"
+                  >
                     -{discountPercent}%
                   </Badge>
                 </>
               ) : (
-                <span className="text-lg font-bold text-gold">
-                  £{ticketPrice.toFixed(2)}
-                </span>
+                <span className="text-lg font-bold text-gold">£{ticketPrice.toFixed(2)}</span>
               )}
             </div>
 
@@ -266,9 +258,7 @@ export function CompetitionCard({ competition: comp, variant = "default" }: Comp
                             </div>
                           </div>
                         ) : (
-                          <span className="text-sm font-bold text-yellow-400">
-                            Draw Pending
-                          </span>
+                          <span className="text-sm font-bold text-yellow-400">Draw Pending</span>
                         )}
                       </div>
                     </div>
@@ -308,9 +298,7 @@ export function CompetitionCard({ competition: comp, variant = "default" }: Comp
                       </Badge>
                     </>
                   ) : (
-                    <span className="text-2xl font-bold text-gold">
-                      £{ticketPrice.toFixed(2)}
-                    </span>
+                    <span className="text-2xl font-bold text-gold">£{ticketPrice.toFixed(2)}</span>
                   )}
                 </div>
                 <span className="text-xs text-muted-foreground">

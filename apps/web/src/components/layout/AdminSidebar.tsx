@@ -1,5 +1,7 @@
 "use client";
 
+import { useAuth } from "@luxero/auth";
+import { cn } from "@luxero/utils";
 import {
   BarChart3,
   FolderTree,
@@ -15,8 +17,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "@luxero/auth";
-import { cn } from "@luxero/utils";
 
 interface NavItem {
   href: string;

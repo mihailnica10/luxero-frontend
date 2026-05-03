@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "@luxero/auth";
 import { Button, Input, Label } from "@luxero/ui";
 import { cn } from "@luxero/utils";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
   const navigate = useNavigate();

@@ -1,16 +1,11 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse } from "@luxero/types";
+import { Button, Card, CardContent, Input, ProtectedRoute, Skeleton, Switch } from "@luxero/ui";
 import { Globe, MapPin, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { ProtectedRoute } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Card, CardContent } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { Switch } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface ProfileData {
   fullName?: string;
@@ -56,7 +51,9 @@ function PublicPreview({ profile }: { profile: ProfileData }) {
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold/30 to-gold/10 flex items-center justify-center flex-shrink-0">
             {profile.fullName ? (
-              <span className="text-xl font-bold text-gold">{profile.fullName[0].toUpperCase()}</span>
+              <span className="text-xl font-bold text-gold">
+                {profile.fullName[0].toUpperCase()}
+              </span>
             ) : (
               <User className="w-7 h-7 text-gold/50" />
             )}
@@ -69,12 +66,15 @@ function PublicPreview({ profile }: { profile: ProfileData }) {
             {profile.showLocation && profile.city && (
               <p className="text-sm text-muted-foreground flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5" />
-                {profile.city}{profile.postcode ? `, ${profile.postcode}` : ""}
+                {profile.city}
+                {profile.postcode ? `, ${profile.postcode}` : ""}
               </p>
             )}
             {profile.showSocials && (
               <div className="flex items-center gap-2 mt-2">
-                {profile.instagram && <span className="text-xs text-gold">@{profile.instagram}</span>}
+                {profile.instagram && (
+                  <span className="text-xs text-gold">@{profile.instagram}</span>
+                )}
                 {profile.twitter && <span className="text-xs text-gold">@{profile.twitter}</span>}
               </div>
             )}
@@ -90,7 +90,9 @@ function PublicPreview({ profile }: { profile: ProfileData }) {
             <p className="text-xs text-muted-foreground">entries</p>
           </div>
           <div className="text-center">
-            <p className="text-lg font-bold text-foreground">£{(profile.totalSpent ?? 0).toFixed(0)}</p>
+            <p className="text-lg font-bold text-foreground">
+              £{(profile.totalSpent ?? 0).toFixed(0)}
+            </p>
             <p className="text-xs text-muted-foreground">spent</p>
           </div>
         </div>
@@ -215,7 +217,9 @@ function ProfileContent() {
               </Card>
               <Card className="border-gold/20">
                 <CardContent className="p-4 text-center">
-                  <p className="text-2xl font-bold text-gold">£{(profile.totalSpent ?? 0).toFixed(2)}</p>
+                  <p className="text-2xl font-bold text-gold">
+                    £{(profile.totalSpent ?? 0).toFixed(2)}
+                  </p>
                   <p className="text-xs text-muted-foreground mt-1">Total Spent</p>
                 </CardContent>
               </Card>
@@ -285,7 +289,9 @@ function ProfileContent() {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2 md:col-span-2">
-                      <label className="text-sm font-medium text-muted-foreground">Address Line 1</label>
+                      <label className="text-sm font-medium text-muted-foreground">
+                        Address Line 1
+                      </label>
                       <Input
                         name="addressLine1"
                         value={form.addressLine1 || ""}
@@ -294,7 +300,9 @@ function ProfileContent() {
                       />
                     </div>
                     <div className="space-y-2 md:col-span-2">
-                      <label className="text-sm font-medium text-muted-foreground">Address Line 2</label>
+                      <label className="text-sm font-medium text-muted-foreground">
+                        Address Line 2
+                      </label>
                       <Input
                         name="addressLine2"
                         value={form.addressLine2 || ""}
@@ -378,7 +386,9 @@ function ProfileContent() {
                     <div className="flex items-center justify-between py-2 border-b border-border/30">
                       <div>
                         <p className="text-sm font-medium">Show last name</p>
-                        <p className="text-xs text-muted-foreground">Display your full name on public entries</p>
+                        <p className="text-xs text-muted-foreground">
+                          Display your full name on public entries
+                        </p>
                       </div>
                       <Switch
                         checked={form.showLastName || false}
@@ -388,7 +398,9 @@ function ProfileContent() {
                     <div className="flex items-center justify-between py-2 border-b border-border/30">
                       <div>
                         <p className="text-sm font-medium">Show location</p>
-                        <p className="text-xs text-muted-foreground">Display your city on public entries</p>
+                        <p className="text-xs text-muted-foreground">
+                          Display your city on public entries
+                        </p>
                       </div>
                       <Switch
                         checked={form.showLocation || false}
@@ -408,7 +420,9 @@ function ProfileContent() {
                   <div className="flex items-center justify-between py-2">
                     <div>
                       <p className="text-sm font-medium">Marketing emails</p>
-                      <p className="text-xs text-muted-foreground">Receive exclusive offers and competition updates</p>
+                      <p className="text-xs text-muted-foreground">
+                        Receive exclusive offers and competition updates
+                      </p>
                     </div>
                     <Switch
                       checked={form.marketingConsent || false}

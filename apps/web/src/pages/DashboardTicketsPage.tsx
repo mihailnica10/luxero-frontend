@@ -1,14 +1,11 @@
+import { api } from "@luxero/api-client";
+import type { ApiResponse } from "@luxero/types";
+import { Badge, Button, ProtectedRoute, Skeleton } from "@luxero/ui";
 import { Ticket } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { ProtectedRoute } from "@luxero/ui";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { ApiResponse } from "@luxero/types";
 
 interface Entry {
   _id: string;
@@ -34,7 +31,11 @@ function CountdownBadge({ drawDate }: { drawDate?: string }) {
   const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
   if (days === 1) return <span className="text-xs text-amber-400">Draws tomorrow</span>;
   if (days <= 7) return <span className="text-xs text-amber-400">Draws in {days} days</span>;
-  return <span className="text-xs text-muted-foreground">Draw: {new Date(drawDate).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>;
+  return (
+    <span className="text-xs text-muted-foreground">
+      Draw: {new Date(drawDate).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}
+    </span>
+  );
 }
 
 function TicketsContent() {
@@ -108,13 +109,20 @@ function TicketsContent() {
                     : { label: "Drawn", cls: "text-emerald-400 border-emerald-400/30" };
 
               return (
-                <div key={entry._id} className="group p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10 hover:bg-gold/5 hover:ring-gold/30 transition-all duration-500">
+                <div
+                  key={entry._id}
+                  className="group p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10 hover:bg-gold/5 hover:ring-gold/30 transition-all duration-500"
+                >
                   <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-4">
                     <div className="flex items-center gap-4">
                       {/* Competition thumbnail */}
                       <div className="relative w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-gold/20 to-gold/5">
                         {imageUrl ? (
-                          <img src={imageUrl} alt={comp.title} className="w-full h-full object-cover" />
+                          <img
+                            src={imageUrl}
+                            alt={comp.title}
+                            className="w-full h-full object-cover"
+                          />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center">
                             <Ticket className="w-6 h-6 text-gold/30" />
@@ -132,17 +140,23 @@ function TicketsContent() {
                         <div className="flex flex-wrap items-center gap-1.5 mt-2">
                           {entry.ticketNumbers?.length > 0 ? (
                             entry.ticketNumbers.slice(0, 8).map((n) => (
-                              <span key={n} className="text-[10px] font-mono bg-gold/10 text-gold px-2 py-0.5 rounded-full border border-gold/20">
+                              <span
+                                key={n}
+                                className="text-[10px] font-mono bg-gold/10 text-gold px-2 py-0.5 rounded-full border border-gold/20"
+                              >
                                 #{n}
                               </span>
                             ))
                           ) : (
                             <span className="text-xs text-muted-foreground">
-                              {ticketCount} ticket{ticketCount !== 1 ? "s" : ""} — no numbers assigned yet
+                              {ticketCount} ticket{ticketCount !== 1 ? "s" : ""} — no numbers
+                              assigned yet
                             </span>
                           )}
                           {entry.ticketNumbers?.length > 8 && (
-                            <span className="text-[10px] text-muted-foreground">+{entry.ticketNumbers.length - 8} more</span>
+                            <span className="text-[10px] text-muted-foreground">
+                              +{entry.ticketNumbers.length - 8} more
+                            </span>
                           )}
                         </div>
 

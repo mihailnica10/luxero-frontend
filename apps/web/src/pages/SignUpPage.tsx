@@ -1,16 +1,13 @@
+import { api } from "@luxero/api-client";
+import { useAuth } from "@luxero/auth";
+import type { ApiResponse, AuthResponse } from "@luxero/types";
+import { Button, Input, Label, Skeleton } from "@luxero/ui";
+import { useMutation } from "@tanstack/react-query";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
-import { Button } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Label } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { Eye, EyeOff } from "lucide-react";
-import { useAuth } from "@luxero/auth";
-import { api } from "@luxero/api-client";
-import type { ApiResponse, AuthResponse } from "@luxero/types";
 
 export function SignUpPage() {
   const navigate = useNavigate();
@@ -25,8 +22,15 @@ export function SignUpPage() {
   const [clientError, setClientError] = useState<string | null>(null);
 
   const mutation = useMutation({
-    mutationFn: ({ email, password, fullName }: { email: string; password: string; fullName: string }) =>
-      api.post<ApiResponse<AuthResponse>>("/api/auth/register", { email, password, fullName }),
+    mutationFn: ({
+      email,
+      password,
+      fullName,
+    }: {
+      email: string;
+      password: string;
+      fullName: string;
+    }) => api.post<ApiResponse<AuthResponse>>("/api/auth/register", { email, password, fullName }),
     onSuccess: (res) => {
       setAuth(res.data.token, res.data.user);
       navigate(res.data.user.isAdmin ? "/admin" : "/dashboard", { replace: true });
@@ -101,7 +105,9 @@ export function SignUpPage() {
                   <h1 className="text-2xl font-bold tracking-tight">
                     Create an <span className="text-gold-gradient">Account</span>
                   </h1>
-                  <p className="text-muted-foreground text-sm mt-2">Join Luxero and start winning</p>
+                  <p className="text-muted-foreground text-sm mt-2">
+                    Join Luxero and start winning
+                  </p>
                 </div>
 
                 {(errorMessage || clientError) && (
@@ -157,7 +163,11 @@ export function SignUpPage() {
                         onClick={() => setShowPassword(!showPassword)}
                         tabIndex={-1}
                       >
-                        {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        {showPassword ? (
+                          <EyeOff className="w-4 h-4" />
+                        ) : (
+                          <Eye className="w-4 h-4" />
+                        )}
                       </button>
                     </div>
                   </div>

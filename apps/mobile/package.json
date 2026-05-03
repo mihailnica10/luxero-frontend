@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "typecheck": "tsc --noEmit",
-    "lint": "biome check .",
+    "lint": "biome check src/",
     "format": "biome format --write .",
     "preview": "vite preview",
     "add:android": "cap add android",

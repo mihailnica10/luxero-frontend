@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { api } from "@luxero/api-client";
 import type { ApiResponse } from "@luxero/types";
 import { ArrowLeft, ChevronDown, HelpCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface FaqItem {
   id: string;
@@ -38,18 +38,49 @@ export function FaqPage() {
 
   // Fallback FAQs when API returns nothing
   const fallbackFaqs: FaqItem[] = [
-    { id: "1", question: "How do I enter a competition?", answer: "Browse our competitions, select the number of tickets you want, and complete checkout. Your tickets will be added to your account immediately." },
-    { id: "2", question: "How are winners selected?", answer: "Winners are selected using a certified random number generator (RNG) after the competition closes. Every ticket has an equal chance of winning." },
-    { id: "3", question: "When will the winner be announced?", answer: "Winners are announced on the competition page after the draw date. We notify all winners by email within 7 days of the draw." },
-    { id: "4", question: "How will I receive my prize?", answer: "Winners receive an email notification with instructions. After verification, prizes are dispatched within 14 working days via tracked delivery." },
-    { id: "5", question: "Can I cancel my ticket purchase?", answer: "Ticket purchases are final and non-refundable once completed. Please ensure you have read the competition terms before entering." },
-    { id: "6", question: "Is there a free entry method?", answer: "Yes, you can enter any competition free by post. Send your name, address, email, and chosen competition to our postal address. See the Free Postal Entry page for details." },
+    {
+      id: "1",
+      question: "How do I enter a competition?",
+      answer:
+        "Browse our competitions, select the number of tickets you want, and complete checkout. Your tickets will be added to your account immediately.",
+    },
+    {
+      id: "2",
+      question: "How are winners selected?",
+      answer:
+        "Winners are selected using a certified random number generator (RNG) after the competition closes. Every ticket has an equal chance of winning.",
+    },
+    {
+      id: "3",
+      question: "When will the winner be announced?",
+      answer:
+        "Winners are announced on the competition page after the draw date. We notify all winners by email within 7 days of the draw.",
+    },
+    {
+      id: "4",
+      question: "How will I receive my prize?",
+      answer:
+        "Winners receive an email notification with instructions. After verification, prizes are dispatched within 14 working days via tracked delivery.",
+    },
+    {
+      id: "5",
+      question: "Can I cancel my ticket purchase?",
+      answer:
+        "Ticket purchases are final and non-refundable once completed. Please ensure you have read the competition terms before entering.",
+    },
+    {
+      id: "6",
+      question: "Is there a free entry method?",
+      answer:
+        "Yes, you can enter any competition free by post. Send your name, address, email, and chosen competition to our postal address. See the Free Postal Entry page for details.",
+    },
   ];
 
   const displayFaqs = faqs.length > 0 ? faqs : fallbackFaqs;
-  const filteredFaqs = activeCategory === "all"
-    ? displayFaqs
-    : displayFaqs.filter((f) => f.category === activeCategory);
+  const filteredFaqs =
+    activeCategory === "all"
+      ? displayFaqs
+      : displayFaqs.filter((f) => f.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">

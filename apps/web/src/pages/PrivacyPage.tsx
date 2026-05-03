@@ -1,8 +1,8 @@
-import { Footer } from "../components/layout/Footer";
-import { Header } from "../components/layout/Header";
+import { Button } from "@luxero/ui";
 import { Hash } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@luxero/ui";
+import { Footer } from "../components/layout/Footer";
+import { Header } from "../components/layout/Header";
 
 const sections = [
   {
@@ -11,10 +11,14 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          Luxero (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and services.
+          Luxero (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) is committed to protecting and
+          respecting your privacy. This Privacy Policy explains how we collect, use, disclose, and
+          safeguard your information when you use our website and services.
         </p>
         <p>
-          Please read this Privacy Policy carefully. By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy.
+          Please read this Privacy Policy carefully. By accessing or using our services, you
+          acknowledge that you have read, understood, and agree to be bound by all the terms of this
+          Privacy Policy.
         </p>
       </div>
     ),
@@ -48,7 +52,9 @@ const sections = [
           <li>Send promotional communications (with your consent)</li>
           <li>Improve our website and services</li>
         </ul>
-        <p className="font-semibold text-foreground mt-4">We never sell your personal information.</p>
+        <p className="font-semibold text-foreground mt-4">
+          We never sell your personal information.
+        </p>
       </div>
     ),
   },
@@ -59,9 +65,16 @@ const sections = [
       <div className="space-y-3 text-muted-foreground">
         <p>We process your data under the following legal bases:</p>
         <ul className="list-disc list-inside space-y-2">
-          <li><strong>Contract:</strong> To fulfil our agreement with you when you purchase tickets</li>
-          <li><strong>Consent:</strong> For marketing communications you have opted into</li>
-          <li><strong>Legitimate interests:</strong> For fraud prevention, security, and service improvement</li>
+          <li>
+            <strong>Contract:</strong> To fulfil our agreement with you when you purchase tickets
+          </li>
+          <li>
+            <strong>Consent:</strong> For marketing communications you have opted into
+          </li>
+          <li>
+            <strong>Legitimate interests:</strong> For fraud prevention, security, and service
+            improvement
+          </li>
         </ul>
       </div>
     ),
@@ -77,7 +90,10 @@ const sections = [
           <li>Legal authorities when required by law</li>
           <li>Competitions partners for prize fulfilment</li>
         </ul>
-        <p className="mt-3">We require all third parties to handle your data securely and in accordance with applicable laws.</p>
+        <p className="mt-3">
+          We require all third parties to handle your data securely and in accordance with
+          applicable laws.
+        </p>
       </div>
     ),
   },
@@ -94,7 +110,13 @@ const sections = [
           <li>Object to certain processing activities</li>
           <li>Withdraw marketing consent at any time</li>
         </ul>
-        <p className="mt-3">To exercise any of these rights, contact us at <a href="mailto:privacy@luxero.win" className="text-gold hover:underline">privacy@luxero.win</a>.</p>
+        <p className="mt-3">
+          To exercise any of these rights, contact us at{" "}
+          <a href="mailto:privacy@luxero.win" className="text-gold hover:underline">
+            privacy@luxero.win
+          </a>
+          .
+        </p>
       </div>
     ),
   },
@@ -104,10 +126,13 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          We use cookies and similar technologies to maintain session state, remember your preferences, and understand how you use our website. You can control cookie settings through your browser.
+          We use cookies and similar technologies to maintain session state, remember your
+          preferences, and understand how you use our website. You can control cookie settings
+          through your browser.
         </p>
         <p>
-          Essential cookies are required for the website to function properly. Optional cookies require your consent and can be managed through our cookie consent banner.
+          Essential cookies are required for the website to function properly. Optional cookies
+          require your consent and can be managed through our cookie consent banner.
         </p>
       </div>
     ),
@@ -118,10 +143,12 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          We implement industry-standard security measures to protect your data, including SSL encryption, secure servers, and regular security audits.
+          We implement industry-standard security measures to protect your data, including SSL
+          encryption, secure servers, and regular security audits.
         </p>
         <p>
-          While we strive to protect your information, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.
+          While we strive to protect your information, no method of transmission over the internet
+          is 100% secure. We cannot guarantee absolute security.
         </p>
       </div>
     ),
@@ -132,10 +159,12 @@ const sections = [
     content: (
       <div className="space-y-3 text-muted-foreground">
         <p>
-          We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated &quot;Last updated&quot; date.
+          We may update this Privacy Policy from time to time. Any changes will be posted on this
+          page with an updated &quot;Last updated&quot; date.
         </p>
         <p>
-          We encourage you to review this policy periodically to stay informed about how we protect your information.
+          We encourage you to review this policy periodically to stay informed about how we protect
+          your information.
         </p>
       </div>
     ),
@@ -145,9 +174,17 @@ const sections = [
     title: "10. Contact Us",
     content: (
       <div className="space-y-3 text-muted-foreground">
-        <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+        <p>
+          If you have any questions about this Privacy Policy or our data practices, please contact
+          us:
+        </p>
         <ul className="list-disc list-inside space-y-2">
-          <li>Email: <a href="mailto:privacy@luxero.win" className="text-gold hover:underline">privacy@luxero.win</a></li>
+          <li>
+            Email:{" "}
+            <a href="mailto:privacy@luxero.win" className="text-gold hover:underline">
+              privacy@luxero.win
+            </a>
+          </li>
           <li>Post: Regus Quatro House, Frimley Road, Camberley, England, GU16 7ER</li>
         </ul>
       </div>
@@ -175,7 +212,9 @@ export function PrivacyPage() {
         <div className="relative overflow-hidden rounded-[1.5rem] mb-8">
           <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10">
             <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-6">
-              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">Contents</h2>
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
+                Contents
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {sections.map((section) => (
                   <a
@@ -195,7 +234,11 @@ export function PrivacyPage() {
         {/* Sections */}
         <div className="space-y-4">
           {sections.map((section) => (
-            <div key={section.id} id={section.id} className="relative overflow-hidden rounded-[1.5rem]">
+            <div
+              key={section.id}
+              id={section.id}
+              className="relative overflow-hidden rounded-[1.5rem]"
+            >
               <div className="p-1.5 rounded-[1.5rem] bg-white/5 ring-1 ring-white/10">
                 <div className="rounded-[calc(1.5rem-0.375rem)] bg-card p-6 sm:p-8">
                   <h2 className="text-lg font-semibold text-foreground mb-4">{section.title}</h2>
@@ -207,11 +250,12 @@ export function PrivacyPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground mb-4">
-            Have more questions?
-          </p>
+          <p className="text-sm text-muted-foreground mb-4">Have more questions?</p>
           <Link to="/contact">
-            <Button variant="outline" className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-6">
+            <Button
+              variant="outline"
+              className="border-gold/30 hover:bg-gold/10 font-semibold rounded-full px-6"
+            >
               Contact Us
             </Button>
           </Link>

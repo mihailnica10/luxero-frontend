@@ -1,14 +1,10 @@
+import { api } from "@luxero/api-client";
+import type { AdminCompetition, ApiResponse } from "@luxero/types";
+import { Badge, Button, Card, CardContent, Input, Skeleton } from "@luxero/ui";
 import { Clock, Edit, Plus, Search, Trash2, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AdminLayout } from "../../components/layout/AdminLayout";
-import { Badge } from "@luxero/ui";
-import { Button } from "@luxero/ui";
-import { Card, CardContent } from "@luxero/ui";
-import { Input } from "@luxero/ui";
-import { Skeleton } from "@luxero/ui";
-import { api } from "@luxero/api-client";
-import type { AdminCompetition, ApiResponse } from "@luxero/types";
 
 export function CompetitionsAdminPage() {
   const navigate = useNavigate();
@@ -111,12 +107,24 @@ export function CompetitionsAdminPage() {
                   <tbody>
                     {[...Array(5)].map((_, i) => (
                       <tr key={i} className="border-b border-gold/10">
-                        <td className="p-4"><Skeleton className="h-5 w-40" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-20" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-16" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-24" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-28" shimmer /></td>
-                        <td className="p-4"><Skeleton className="h-5 w-20" shimmer /></td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-40" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-20" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-16" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-24" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-28" shimmer />
+                        </td>
+                        <td className="p-4">
+                          <Skeleton className="h-5 w-20" shimmer />
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -254,10 +262,7 @@ export function CompetitionNewAdminPage() {
         drawDate: form.drawDate ? new Date(form.drawDate) : undefined,
       };
 
-      await api.post<ApiResponse<AdminCompetition>>(
-        "/api/admin/competitions",
-        payload
-      );
+      await api.post<ApiResponse<AdminCompetition>>("/api/admin/competitions", payload);
       navigate(`/admin/competitions`);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to create competition");
